@@ -2,7 +2,7 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.table('ingredients', function(table){
       table.integer('preset_ingredient_id').unsigned();
-      table.foreign('preset_ingredient_id').references('preset_ingredient.id');
+      table.foreign('preset_ingredient_id').references('preset_ingredients.id');
     })
   ])
 };
