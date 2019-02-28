@@ -49,9 +49,9 @@ app.get("/", (req, res) => {
 })
 
 // Getting checkout without ordering returns an error message
-// app.get("/checkout", (req, res) => {
-//   res.status(403).send("You need to select juices to purchase before you can checkout!")
-// });
+app.get("/checkout", (req, res) => {
+  res.render("checkout.ejs");
+});
 
 // Selecting checkout button on homepage redirects user to checkout page
 app.post("/checkout", (req, res) => {
@@ -68,11 +68,11 @@ app.post("/checkout/edit", (req, res) => {
 })
 
 // Selecting confirm button on the checkout page redirects the user to the confirmed page
-app.post("/confirm", (req, res) => {
+app.post("/checkout/confirm", (req, res) => {
   client.messages
   .create({
-    body: 'A new order has been placed! See <link> for details'
-    from: '+16477244390'
+    body: 'A new order has been placed! See <link> for details',
+    from: '+16477244390',
     to: process.env.MY_PHONE_NUMBER,
   })
   .then(message => console.log(message.sid));
