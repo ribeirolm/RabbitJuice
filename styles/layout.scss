@@ -1,7 +1,9 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
 #nav-bar {
   height: 7rem;
   width: 100%;
-  background-color: #3F029C;
+  background-color: #450998;
   color: #e8fdff;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -13,6 +15,10 @@
 body{
   background-image: url("../images/bg.jpg");
   background-color: #cccccc;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 
@@ -41,6 +47,50 @@ body{
 main{
   padding: 2rem;
   padding-top: 7rem;
+  padding-bottom: 7rem;
+  width: 100%;
+}
+
+.home-row{
+padding: 1rem;
+}
+
+.home-col{
+padding: 2rem;
+}
+
+.juice-pics{
+  border-radius: 25%;
+  height: 70%;
+  width: 100%;
+}
+
+.increase{
+margin: 1rem;
+font-family: 'M PLUS Rounded 1c', sans-serif;
+font-weight: 900;
+color: white;
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor:pointer;
+overflow: hidden;
+outline:none;
+font-size: 4rem;
+}
+
+.decrease{
+  margin: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 900;
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 4rem;
 }
 
 footer{
@@ -48,8 +98,9 @@ footer{
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #3F029C;
+  background-color: #450998;
   padding: 1rem;
+  z-index: 1;
 }
 
 #footer-total{
