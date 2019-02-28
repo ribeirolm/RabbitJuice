@@ -2,8 +2,11 @@ exports.up = function(knex, Promise) {
   return Promise.all([
     knex.schema.createTable('orders_lines', function(table){
       table.increments('id').primary();
-      table.integer('order_id').unsigned();
-      table.foreign('order_id').references('orders.id');
+      table.integer('order_id').references('id').inTable('orders');
+      table.integer('preset_drink_id').references('id').inTable('preset_drinks').defaultTo(null);
+    
+    
+    
     })
   ])
 };
