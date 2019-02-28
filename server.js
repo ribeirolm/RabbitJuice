@@ -38,10 +38,58 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/api/users", usersRoutes(knex));
 
-// Home page
+// Render home page
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render("index.ejs");
+})
+
+// Getting checkout without ordering returns an error message
+app.get("/checkout", (req, res) => {
+  res.status(403).send("You need to select juices to purchase before you can checkout!")
 });
+
+// Selecting checkout button on homepage redirects user to checkout page
+app.post("/checkout", (req, res) => {
+  res.redirect("/checkout")
+})
+
+// Selecting edit order button on the checkout page redirects the user to the homepage with order populated
+app.post("/checkout/edit", (req, res) => {
+// Given I am a customer that has selected juices to order ,
+// And I am on the checkout page,
+// When I select the "edit order" button,
+// Then I should be redirected to the homepage that is populated with my order information
+  res.redirect("/")
+})
+
+// Selecting confirm button on the checkout page redirects the user to the confirmed page
+app.post("/confirm", (req, res) => {
+  res.redirect("/checkout/confirmed")
+})
+
+// Getting business page renders business page html
+app.get("/business", (req, res) => {
+  res.render("business.ejs")
+})
+
+// Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
+app.post("/time-entered", (req, res) => {
+//     trigger Twilio to message the customer with the time to pick-up order
+// Given I am a business owner and I am on the business page,
+// When I enter a number into the "time" field,
+// And I select the "send" button,
+// Then I should be on the business page
+})
+
+// Selecting the "pickup" button beside the order in the queue on the business page should make the order in the queue disappear
+app.post("/pickup", (req, res) => {
+//     remove this order from the business page
+// Given I am a business owner and I am on the business page,
+// And the customer order has been picked up,
+// When I select the "picked up" button beside the order,
+// Then the order should disappear from the queue in the business page
+})
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
