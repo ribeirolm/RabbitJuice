@@ -15,7 +15,6 @@
 
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
-    
   </head>
 
   <body>
@@ -30,47 +29,55 @@
     <main>
       <div class="container">
         <div class="row home-row">
-          <div class="col home-col" align="center">
+          <div class="col home-col" align="center" id="berry-col">
             <img class="juice-pics" src="images/berry.jpg">
-            <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+            <button type="submit" class="increase" id="increase-berry">+</button>
+            <h4 class="amount-clicked hide berry">0</h4>
+            <button type="submit" class="decrease" id="decrease-berry">-</button>
           </div>
-          <div class="col home-col" align="center">
+          <div class="col home-col" align="center" id="green-col">
               <img class="juice-pics" src="images/green.jpg">
-              <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+              <button type="submit" class="increase" id="increase-green">+</button>
+              <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-green">-</button>
           </div>
-          <div class="col home-col" align="center">
+          <div class="col home-col" align="center" id="mango-col">
               <img class="juice-pics" src="images/orange-mango.jpg">
-              <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+              <button type="submit" class="increase" id="increase-mango">+</button>
+              <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-mango">-</button>
           </div>
-          <div class="col home-col" align="center">
+          <div class="col home-col" align="center" id="red-col">
               <img class="juice-pics" src="images/red.jpg">
-              <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+              <button type="submit" class="increase" id="increase-red">+</button>
+              <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-red">-</button>
           </div>
         </div>
         <div class="row home-row">
-            <div class="col home-col" align="center">
+            <div class="col home-col" align="center" id="tropical-col">
                 <img class="juice-pics" src="images/tropical.jpg">
-                <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+                <button type="submit" class="increase" id="increase-tropical">+</button>
+                <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-tropical">-</button>
             </div>
-            <div class="col home-col" align="center">
+            <div class="col home-col" align="center" id ="veggie-col">
                 <img class="juice-pics" src="images/veggie.jpg">
-                <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+                <button type="submit" class="increase" id="increase-veggie">+</button>
+                <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-veggie">-</button>
             </div>
-            <div class="col home-col" align="center">
+            <div class="col home-col" align="center" id="banana-col">
                 <img class="juice-pics" src="images/straw-banana.jpg">
-                <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+                <button type="submit" class="increase" id="increase-banana">+</button>
+                <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-banana">-</button>
             </div>
-            <div class="col home-col" align="center">
+            <div class="col home-col" align="center" id="myo-col">
                 <img class="juice-pics" src="images/myo.jpg">
-                <button type="submit" class="increase">+</button>
-            <button type="submit" class="decrease">-</button>
+                <button type="submit" class="increase" id="increase-myo">+</button>
+                <h4 class="amount-clicked hide">0</h4>
+            <button type="submit" class="decrease" id="decrease-myo">-</button>
             </div>
           </div>
       </div>
@@ -81,11 +88,12 @@
         <span class="row" id="footer-total">
           $ Total
         </span>
-        <span class="row" id="total-drinks">
-          X Juices
+        <span class="row total" id="total-drinks">
+            0 Juice(s)
         </span>
         <span>
-          <button type="submit" id="checkout-button">Checkout</button>
+            <input type="submit" value="Next" id="checkout-button">
+          <!-- <button type="submit" id="checkout-button">Checkout</button> -->
         </span>
   </div>
     </footer>

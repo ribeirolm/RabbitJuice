@@ -19,7 +19,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-width: 500px;
+  width: 100%;
 }
 
 
@@ -58,6 +58,21 @@ padding: 1rem;
 
 .home-col{
 padding: 2rem;
+}
+
+.amount-clicked{
+  display: inline;
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 3rem;
+}
+
+.smaller{
+  font-size: 2rem;
+}
+
+.hide{
+  display: none;
 }
 
 .juice-pics{
