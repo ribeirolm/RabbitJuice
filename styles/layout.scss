@@ -1,7 +1,7 @@
 #nav-bar {
   height: 7rem;
   width: 100%;
-  background-color: #BE8BFF;
+  background-color: #3F029C;
   color: #e8fdff;
   padding-left: 2rem;
   padding-right: 2rem;
@@ -9,6 +9,12 @@
   z-index: 1;
   margin-top: 0px;
 }
+
+body{
+  background-image: url("../images/bg.jpg");
+  background-color: #cccccc;
+}
+
 
 .logo{
   width: 6rem;
@@ -31,9 +37,6 @@
   float: right;
 }
 
-body{
-  background-color: #4903A1;
-}
 
 main{
   padding: 2rem;
@@ -45,19 +48,41 @@ footer{
   width: 100%;
   position: fixed;
   bottom: 0;
-  background-color: #BE8BFF;
-  padding: 2rem;
+  background-color: #3F029C;
+  padding: 1rem;
 }
 
-.footer-info{
+#footer-total{
   font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  float: left;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 0.8rem;
 }
 
-
+#total-drinks{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  float: left;
+  color: #e8fdff;
+  margin-left: 4rem;
+  margin-top: 0.8rem;
+}
 
 #checkout-button{
   float: right;
-  margin-left: auto;
-  margin-right: 1rem;
-  margin-bottom: 2rem;
+  background-color: #e8fdff;
+  border-radius: 5px;
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Capriola', sans-serif;
+  border: 1px solid black;
+  height: 4rem;
+  width: 13rem;
+  margin-right: 2rem;
 }
+
+
+
