@@ -1,7 +1,63 @@
-body {
-  background-color: #EEE;
+#nav-bar {
+  height: 7rem;
+  width: 100%;
+  background-color: #BE8BFF;
+  color: #e8fdff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0px;
+}
 
-  h1 {
-    color: #244751;
-  }
+.logo{
+  width: 6rem;
+    height: 5rem;
+    margin: 1rem;
+    float: left;
+}
+  
+.header{
+  font-family: 'Capriola', sans-serif;
+  font-size: 3rem;
+  line-height: 7rem;
+}
+
+.info{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  line-height: 7rem;
+  margin-right: 1rem;
+  float: right;
+}
+
+body{
+  background-color: #4903A1;
+}
+
+main{
+  padding: 2rem;
+  padding-top: 7rem;
+}
+
+footer{
+  height: 6rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #BE8BFF;
+  padding: 2rem;
+}
+
+.footer-info{
+  font-family: 'Capriola', sans-serif;
+}
+
+
+
+#checkout-button{
+  float: right;
+  margin-left: auto;
+  margin-right: 1rem;
+  margin-bottom: 2rem;
 }
