@@ -1,13 +1,16 @@
 exports.up = function(knex, Promise) {
   return Promise.all([
-    knex.schema.createTable('preset_ingredient', function(table){
+    knex.schema.createTable('ingredients', function(table){
       table.increments('id').primary();
+      table.string('name');
+      table.decimal('price');
+      table.string('img');
     })
   ])
 };
 
 exports.down = function(knex, Promise) {
   return Promise.all([
-    knex.schema.dropTable('preset_ingredient')
+    knex.schema.dropTable('ingredients')
   ])
 };
