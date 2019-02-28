@@ -10,6 +10,7 @@
 // });
 
 let totalCounter = 0;
+let totalPrice = 0;
 $(document).ready(function() {
   
 function updateTotal(total){
@@ -23,6 +24,9 @@ function updateTotal(total){
 
   $(".increase").on("click", function (event)
   {
+
+    console.log(event);
+    
     let counter = event.target.nextSibling.nextSibling.innerHTML;
 
     totalCounter++;
