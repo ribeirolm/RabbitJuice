@@ -5,6 +5,7 @@ require('dotenv').config();
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
+const cookieParser= require("cookie-parser");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
@@ -30,6 +31,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+app.use(cookieParser('The dog barks loudly when no one is listening'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -45,7 +47,11 @@ app.use("/api/users", usersRoutes(knex));
 
 // Render home page
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  let templateVars = {
+    drinks : req.params.`drink id`,
+    drink_counter: req.params.`total counter`,
+  };
+  res.render("index.ejs", templateVars);
 })
 
 // Getting checkout without ordering returns an error message
@@ -53,8 +59,8 @@ app.get("/checkout", (req, res) => {
   res.render("checkout.ejs");
 });
 
-// Selecting checkout button on homepage redirects user to checkout page
-app.post("/checkout", (req, res) => {
+// Selecting next button on homepage redirects user to checkout page
+app.post("/next", (req, res) => {
   res.redirect("/checkout")
 })
 
@@ -90,7 +96,8 @@ app.post("/time-entered", (req, res) => {
     .create({
        body: 'Your order has been processed and will be ready in <number> minutes',
        from: '+16477244390',
-       to: process.env.MY_PHONE_NUMBER,
+       // to: process.env.MY_PHONE_NUMBER,
+       to: `retrieve this from the business page order object?`
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
