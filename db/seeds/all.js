@@ -7,6 +7,7 @@ exports.seed = function(knex, Promise) {
   knex('preset_drinks').del(),
   knex('ingredients').del(),
   knex('orders').del()
+  
   ]).then(() => Promise.all([
   //data in orders
   knex('orders').insert({id: 1, name: 'Alice', phone_number: '777-098-7654', status: "picked up"}),
@@ -30,13 +31,14 @@ exports.seed = function(knex, Promise) {
   knex('ingredients').insert({id: 14, name: 'Protein', img: '/public/images/protein.jpg'}),
   knex('ingredients').insert({id: 15, name: 'Immunity', img: '/public/images/immunity.jpg'})
 ])).then(() => Promise.all([
-  knex('preset_drinks').insert({id: 1, name: 'Berry Juice', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 2, name: 'Strawberrry Banana Juice', img: '/public/images/straw-banana.jpg'}),
-  knex('preset_drinks').insert({id: 3, name: 'Tropical Juice', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 4, name: 'Green Juice', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 5, name: 'Veggie Juice', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 6, name: 'Orange Mango Juice', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 7, name: 'Red Juice', img: '/public/images/berry.jpg'})
+  knex('preset_drinks').insert({id: 1, name: 'Berry Juice', price: '6.25', img: '/public/images/berry.jpg'}),
+  knex('preset_drinks').insert({id: 2, name: 'Strawberrry Banana Juice', price: '6.25', img: '/public/images/straw-banana.jpg'}),
+  knex('preset_drinks').insert({id: 3, name: 'Tropical Juice', price: '7.50', img: '/public/images/berry.jpg'}),
+  knex('preset_drinks').insert({id: 4, name: 'Green Juice', price: '7.50', img: '/public/images/berry.jpg'}),
+  knex('preset_drinks').insert({id: 5, name: 'Veggie Juice', price: '8.25', img: '/public/images/berry.jpg'}),
+  knex('preset_drinks').insert({id: 6, name: 'Orange Mango Juice', price: '6.25', img: '/public/images/berry.jpg'}),
+  knex('preset_drinks').insert({id: 7, name: 'Red Juice', price: '7.50', img: '/public/images/berry.jpg'})
+
 ])).then(() => Promise.all([
 
   knex('preset_ingredients').insert({id: 1, preset_drink_id: 1, ingredient_id: 1}),

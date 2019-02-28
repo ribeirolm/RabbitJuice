@@ -48,8 +48,8 @@ app.use("/api/users", usersRoutes(knex));
 // Render home page
 app.get("/", (req, res) => {
   let templateVars = {
-    drinks : req.params.`drink id`,
-    drink_counter: req.params.`total counter`,
+    // drinks : req.params.`drink id`,
+    // drink_counter: req.params.`total counter`
   };
   res.render("index.ejs", templateVars);
 })
