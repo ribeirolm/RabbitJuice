@@ -5,49 +5,38 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
+  // retrieve all preset drink information for display on the homepage
   router.get("/", (req, res) => {
-    res.render("index.ejs");
+     knex
+      .select("name")
+      .from("preset_drinks")
+      .then((results) => {
+        res.json(results);
+    });
   })
 
+  //retrieve all ingredients for "make your own" drink for display on the checkout page
   router.get("/checkout", (req, res) => {
-   res.status(403).send("You need to select juices to purchase before you can checkout!")
-  });
-
-  router.post("/checkout", (req, res) => {
-    res.redirect("/checkout")
+    knex
+      .select("name", "price")
+      .from("ingredients")
+      .then((results) => {
+        res.json(results);
+      });
   })
 
-  router.post("/edit", (req, res) => {
-// Given I am a customer that has selected juices to order ,
-// And I am on the checkout page,
-// When I select the "edit order" button,
-// Then I should be redirected to the homepage that is populated with my order information
-    res.redirect("/")
-  })
-
-  router.post("/confirm", (req, res) => {
-    res.redirect("/confirmed")
-  })
-
+  //retrieve orders with no finished time for display on the order queue in the business page
+  //need to join with users table to pull the users name and phone number to display within the order
   router.get("/business", (req, res) => {
-    res.render("business.ejs")
+    knex
+      .select("*")
+      .from("orders")
+      .where("time_finish", null)
+      .then((results) => {
+        res.json(results);
+      });
   })
 
-  router.post("/time-entered", (req, res) => {
-//     trigger Twilio to message the customer with the time to pick-up order
-// Given I am a business owner and I am on the business page,
-// When I enter a number into the "time" field,
-// And I select the "send" button,
-// Then I should be on the business page
-  })
-
-  router.post("/pickup", (req, res) => {
-//     remove this order from the business page
-// Given I am a business owner and I am on the business page,
-// And the customer order has been picked up,
-// When I select the "picked up" button beside the order,
-// Then the order should disappear from the queue in the business page
-  })
 
   return router;
 

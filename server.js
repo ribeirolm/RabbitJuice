@@ -5,6 +5,7 @@ require('dotenv').config();
 const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
+const cookieParser= require("cookie-parser");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
@@ -13,6 +14,11 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
+// Needed for twilio connection
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = require('twilio')(accountSid, authToken);
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -25,6 +31,7 @@ app.use(morgan('dev'));
 // Log knex SQL queries to STDOUT as well
 app.use(knexLogger(knex));
 
+app.use(cookieParser('The dog barks loudly when no one is listening'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
@@ -40,16 +47,20 @@ app.use("/api/users", usersRoutes(knex));
 
 // Render home page
 app.get("/", (req, res) => {
-  res.render("index.ejs");
+  let templateVars = {
+    drinks : req.params.`drink id`,
+    drink_counter: req.params.`total counter`,
+  };
+  res.render("index.ejs", templateVars);
 })
 
 // Getting checkout without ordering returns an error message
 app.get("/checkout", (req, res) => {
-  res.status(403).send("You need to select juices to purchase before you can checkout!")
+  res.render("checkout.ejs");
 });
 
-// Selecting checkout button on homepage redirects user to checkout page
-app.post("/checkout", (req, res) => {
+// Selecting next button on homepage redirects user to checkout page
+app.post("/next", (req, res) => {
   res.redirect("/checkout")
 })
 
@@ -63,7 +74,14 @@ app.post("/checkout/edit", (req, res) => {
 })
 
 // Selecting confirm button on the checkout page redirects the user to the confirmed page
-app.post("/confirm", (req, res) => {
+app.post("/checkout/confirm", (req, res) => {
+  client.messages
+  .create({
+    body: 'A new order has been placed! See <link> for details',
+    from: '+16477244390',
+    to: process.env.MY_PHONE_NUMBER,
+  })
+  .then(message => console.log(message.sid));
   res.redirect("/checkout/confirmed")
 })
 
@@ -74,22 +92,16 @@ app.get("/business", (req, res) => {
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
 app.post("/time-entered", (req, res) => {
-//     trigger Twilio to message the customer with the time to pick-up order
-// Given I am a business owner and I am on the business page,
-// When I enter a number into the "time" field,
-// And I select the "send" button,
-// Then I should be on the business page
+  client.messages
+    .create({
+       body: 'Your order has been processed and will be ready in <number> minutes',
+       from: '+16477244390',
+       // to: process.env.MY_PHONE_NUMBER,
+       to: `retrieve this from the business page order object?`
+     })
+    .then(message => console.log(message.sid));
+    res.redirect("/business")
 })
-
-// Selecting the "pickup" button beside the order in the queue on the business page should make the order in the queue disappear
-app.post("/pickup", (req, res) => {
-//     remove this order from the business page
-// Given I am a business owner and I am on the business page,
-// And the customer order has been picked up,
-// When I select the "picked up" button beside the order,
-// Then the order should disappear from the queue in the business page
-})
-
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
