@@ -1,4 +1,3 @@
-
 // $(() => {
 //   $.ajax({
 //     method: "GET",
@@ -118,5 +117,4 @@ $(".decrease").on("click", function (event)
     updateTotal(totalCounter);
   console.log(cart);
 });
-//  5adec31f2508629f6f4e965254b4066cae5f012b
 });

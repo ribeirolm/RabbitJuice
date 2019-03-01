@@ -1,4 +1,14 @@
-
+<<<<<<< HEAD
+$(function() {
+  // $.ajax({
+  //   method: "GET",
+  //   url: "/api/users"
+  // }).done((users) => {
+  //   for(user of users) {
+  //     $("<div>").text(user.name).appendTo($("body"));
+  //   }
+  // });
+=======
 // $(() => {
 //   $.ajax({
 //     method: "GET",
@@ -118,5 +128,5 @@ $(".decrease").on("click", function (event)
     updateTotal(totalCounter);
   console.log(cart);
 });
-//  5adec31f2508629f6f4e965254b4066cae5f012b
+>>>>>>> 5adec31f2508629f6f4e965254b4066cae5f012b
 });
