@@ -28,20 +28,26 @@ module.exports = (knex) => {
   //retrieve all ingredients for "make your own" drink for display on the checkout page
   router.get("/checkout", (req, res) => {
     knex
-      .select()
+      .select('*')
       .from("ingredients")
       .then((results) => {
         res.json(results);
-      });
-  })
+  });
+})
 
   //retrieve orders with no finished time for display on the order queue in the business page
   //need to join with users table to pull the users name and phone number to display within the order
   router.get("/business", (req, res) => {
+  
     knex
-      .select("*")
+      .select('*')
       .from("orders")
-      .where("status", "outstanding")
+      .join("orders_lines","orders_lines.order_id","orders.id")
+      
+      // .where({
+      //   'orders.status': "outstanding",
+      //   'orders_lines.preset_drink_id':1
+      // })
       .then((results) => {
         res.json(results);
       });
