@@ -11,10 +11,10 @@
 
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <!-- <link rel="stylesheet" href="/styles/layout.css" type="text/css" /> -->
+    <link rel="stylesheet" href="/styles/business.css" type="text/css" />
 
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="/scripts/business-page.js"></script>
 
   </head>
 
@@ -29,30 +29,33 @@
 
     <main>
       <div class="container">
-        <div>
-        <!-- <div class="row home-row"> -->
-          <h2>THIS IS ORDER 1</h2>
-          <form method="POST" action="/time-entered">
-            <h3>Minutes to completion:</h3>
-            <textarea id="minutes"class = "textarea" name="text" placeholder="17"></textarea>
-            <button type="submit">Send</button>
-          </form>
-        </div>
-        <div>
-        <!-- <div class="row home-row"> -->
-          <h2>THIS IS ORDER 2</h2>
-            <h3>Minutes to completion:</h3>
-            <form method="POST" action="/time-entered">
-            <textarea id="minutes" class = "textarea" name="text" placeholder="21"></textarea>
-            <button type="submit">Send</button>
-          </form>
-        </div>
+        <section id="order" >
+          <header>
+          <h3>ORDER 123</h3>
+          </header>
+          <div>
+            <h4>Line items:</h4>
+            <h5>Red Drink</h5>
+            <h6>Ingredients: ingredients needed for red drink</h6>
+            <h5>Custom Drink</h5>
+            <h6>Ingredients: ingredients needed for custom drink</h6>
+          </div>
+          <footer class="line-item">
+            <form id="newOrder" method="POST" action="/time-entered">
+              <h4>Minutes to completion:</h4>
+              <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
+              <textarea id="minutes"class = "textarea" name="text" placeholder="17"></textarea>
+              <input method="POST" action="/time-entered" type="submit" value="Send to Customer">
+            </form>
+            <input method="POST" action="/business/:order_id/pickup" type="submit" value="Picked Up">
+          </footer>
+        </section>
       </div>
     </main>
 
     <!-- Adding Bootstrap Scripts -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
 </html>
