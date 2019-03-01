@@ -29,25 +29,25 @@ module.exports = (knex) => {
   router.get("/checkout", async (req, res) => {
     
     const presetResults = await knex
-      .select('orders.id as orderid', 'orders.name as customername','orders.phone_number', 'orders_lines.id', 'preset_drinks.img as drinkimg', 'preset_drinks.name as presetname',
-      knex.raw('ARRAY_AGG(ingredients.name) as iname'))
+      .select('orders.id as orderNum', 'orders.name as customerName','orders.phone_number as phoneNum', 'orders_lines.id as orderLineNum', 'preset_drinks.img as drinkImg', 'preset_drinks.name as presetDrinkName','orders.estimated_time as estimatedTime',
+      knex.raw('ARRAY_AGG(ingredients.name) as ingredientName'))
       .from("orders_lines")
       .join("orders","orders_lines.order_id","orders.id")
       .join("preset_drinks", 'preset_drinks.id','orders_lines.preset_drink_id')
       .join('preset_ingredients', 'preset_ingredients.preset_drink_id', 'preset_drinks.id')
       .join("ingredients",'ingredients.id','preset_ingredients.ingredient_id')
-      .groupBy('orderid', 'orders_lines.id','customername','orders.phone_number', 'drinkimg','presetname')
+      .groupBy('orderNum', 'customerName','phoneNum', 'orderLineNum', 'drinkImg','presetDrinkName' ,'estimatedTime')
       .where({'orders.id': 2})
       .whereNotNull('orders_lines.preset_drink_id')
    
     const customizedResults = await knex
-      .select('orders.id as orderid', 'orders_lines.id','orders.name as customername','orders.phone_number',
-      knex.raw('ARRAY_AGG(ingredients.name) as iname'))
+      .select('orders.id as orderNum', 'orders_lines.id as orderLineNum','orders.name as customerName','orders.phone_number as phoneNum','orders.estimated_time as estimatedTime',
+      knex.raw('ARRAY_AGG(ingredients.name) as igredientName'))
       .from("orders_lines")
       .join("orders","orders_lines.order_id","orders.id")
       .join("customized_drinks_ingredients", 'customized_drinks_ingredients.customized_drink_id','orders_lines.order_id')
       .join("ingredients",'ingredients.id','customized_drinks_ingredients.ingredient_id')
-      .groupBy('orderid', 'orders_lines.id','orders,name as customername','orders.phone_number')
+      .groupBy('orderNum', 'orderLineNum','customerName','phoneNum', 'estimatedTime')
       .where({'orders.id': 2})
       .whereNull('orders_lines.preset_drink_id')
       
@@ -68,25 +68,25 @@ module.exports = (knex) => {
   router.get("/business", async (req, res) => {
     
     const presetResults = await knex
-      .select('orders.id as orderid', 'orders_lines.id','orders.name as customername','orders.phone_number', 'preset_drinks.img as drinkimg', 'preset_drinks.name as presetname',
-      knex.raw('ARRAY_AGG(ingredients.name) as iname'))
+      .select('orders.id as orderNum', 'orders_lines.id as orderLineNum','orders.name as customerName','orders.phone_number as phoneNum', 'preset_drinks.img as drinkImg', 'preset_drinks.name as presetDrinkName','orders.estimated_time as estimatedTime',
+      knex.raw('ARRAY_AGG(ingredients.name) as ingredientName'))
       .from("orders_lines")
       .join("orders","orders_lines.order_id","orders.id")
       .join("preset_drinks", 'preset_drinks.id','orders_lines.preset_drink_id')
       .join('preset_ingredients', 'preset_ingredients.preset_drink_id', 'preset_drinks.id')
       .join("ingredients",'ingredients.id','preset_ingredients.ingredient_id')
-      .groupBy('orderid', 'orders_lines.id','customername','orders.phone_number', 'drinkimg','presetname')
+      .groupBy('orderNum', 'orderLineNum','customerName','phoneNum', 'drinkImg','presetDrinkName','estimatedTime')
       .where({'orders.status': 'outstanding'})
       .whereNotNull('orders_lines.preset_drink_id')
    
     const customizedResults = await knex
-      .select('orders.id as orderid', 'orders_lines.id','orders.name as customername','orders.phone_number',
-      knex.raw('ARRAY_AGG(ingredients.name) as iname'))
+      .select('orders.id as orderNum', 'orders_lines.id as orderLineNum','orders.name as customerName','orders.phone_number as phoneNum','orders.estimated_time as estimatedTime',
+      knex.raw('ARRAY_AGG(ingredients.name) as ingredientName'))
       .from("orders_lines")
       .join("orders","orders_lines.order_id","orders.id")
       .join("customized_drinks_ingredients", 'customized_drinks_ingredients.customized_drink_id','orders_lines.order_id')
       .join("ingredients",'ingredients.id','customized_drinks_ingredients.ingredient_id')
-      .groupBy('orderid', 'orders_lines.id','customername','orders.phone_number')
+      .groupBy('orderNum', 'orderLineNum','customerName','phoneNum', 'estimatedTime')
       .where({'orders.status': 'outstanding'})
       .whereNull('orders_lines.preset_drink_id')
       

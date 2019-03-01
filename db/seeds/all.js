@@ -10,9 +10,9 @@ exports.seed = function(knex, Promise) {
   
   ]).then(() => Promise.all([
   //data in orders
-  knex('orders').insert({id: 1, name: 'Alice', phone_number: '777-098-7654', status: "picked up"}),
-  knex('orders').insert({id: 2, name: 'Bob', phone_number: '999-001-0000', status: "outstanding"}),
-  knex('orders').insert({id: 3, name: 'Charlie', phone_number: '444-333-2222', status: "outstanding"})
+  knex('orders').insert({id: 1, name: 'Alice', phone_number: '777-098-7654', status: "picked up", estimated_time: 5}),
+  knex('orders').insert({id: 2, name: 'Bob', phone_number: '999-001-0000', status: "outstanding", estimated_time: 7}),
+  knex('orders').insert({id: 3, name: 'Charlie', phone_number: '444-333-2222', status: "outstanding", estimated_time: 15})
   ])).then(() => Promise.all([
   //data in ingredients
   knex('ingredients').insert({id: 1, name: 'Strawberry', price: 2.50, img: '/public/images/strawberries.jpg'}),
