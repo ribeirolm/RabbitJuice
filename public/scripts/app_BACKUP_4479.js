@@ -14,7 +14,7 @@ let totalCounter = 0;
 let totalPrice = 0;
 let cart = {};
 $(document).ready(function() {
-  
+
 function updateTotal(total){
   if (total < 0){
     totalCounter = 0;
@@ -50,10 +50,10 @@ function updateTotalPrice(total){
 
     let price = event.target.previousSibling.previousSibling.innerHTML;
     let priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
-    
+
     let itemId = event.target.nextSibling.nextSibling.id;
 
-    
+
     let counter = event.target.nextSibling.nextSibling.innerHTML;
     console.log(event);
     totalCounter++;
@@ -81,7 +81,7 @@ function updateTotalPrice(total){
     console.log(cart);
     updateTotal(totalCounter);
     updateTotalPrice(totalPrice);
-  
+
 });
 
 $(".decrease").on("click", function (event)
@@ -90,14 +90,14 @@ $(".decrease").on("click", function (event)
   let price = event.target.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
   let priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
   let itemId = event.target.previousSibling.previousSibling.id;
-  
+
   if (cart[itemId] < 1 || !Object.keys(cart).includes(itemId)){
     cart[itemId] = 0;
   }
   totalCounter--;
   counter--;
   cart[itemId]--;
-  
+
   if (counter < 0){
     counter = 0;
     cart[itemId] = 0;
@@ -118,5 +118,4 @@ $(".decrease").on("click", function (event)
     updateTotal(totalCounter);
   console.log(cart);
 });
-//  5adec31f2508629f6f4e965254b4066cae5f012b
 });

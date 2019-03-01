@@ -19,7 +19,7 @@ body{
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  min-width: 500px;
+  width: 100%;
 }
 
 
@@ -60,10 +60,39 @@ padding: 1rem;
 padding: 2rem;
 }
 
+.amount-clicked{
+  display: inline;
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 3rem;
+}
+
+.smaller{
+  font-size: 2rem;
+}
+
+.hide{
+  display: none;
+}
+
 .juice-pics{
   border-radius: 25%;
-  height: 70%;
+  height: 60%;
   width: 100%;
+}
+
+.price{
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.price-myo{
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 2rem;
+  padding-top: 1rem;
 }
 
 .increase{
