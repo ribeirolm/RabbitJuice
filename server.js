@@ -21,7 +21,7 @@ const authToken = process.env.TWILIO_AUTH_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
+const usersRoutes = require("./routes/dbroute");
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
