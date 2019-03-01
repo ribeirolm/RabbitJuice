@@ -9485,18 +9485,8 @@ a.text-dark:hover, a.text-dark:focus {
   padding-left: 2rem;
   padding-right: 2rem;
   position: fixed;
-  z-index: 1;
+  z-index: 1000;
   margin-top: 0px;
-}
-
-body {
-  background-image: url("../images/bg.jpg");
-  background-color: #cccccc;
-  background-attachment: fixed;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 100%;
 }
 
 .logo {
@@ -9518,6 +9508,20 @@ body {
   line-height: 7rem;
   margin-right: 1rem;
   float: right;
+}
+
+body {
+  background-image: url("../images/bg.jpg");
+  background-color: #cccccc;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+#homepage-main {
+  margin-left: 22rem;
 }
 
 main {
@@ -9596,6 +9600,179 @@ main {
   overflow: hidden;
   outline: none;
   font-size: 4rem;
+  visibility: hidden;
+}
+
+.show-button {
+  visibility: visible;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  width: 22rem;
+  position: fixed;
+  top: 7rem;
+  left: 0;
+  height: 100%;
+  z-index: 999;
+  background: #360776;
+  color: #e8fdff;
+  transition: all 0.3s;
+  padding-top: 2rem;
+}
+
+#your-order {
+  font-family: 'Capriola', sans-serif;
+  font-size: 3rem;
+  color: #e8fdff;
+  margin-left: 2rem;
+}
+
+#name-tag {
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+#name-field {
+  margin-left: 2rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  height: 3rem;
+  width: 19rem;
+}
+
+#number-tag {
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+#number-field {
+  margin-left: 2rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  height: 3rem;
+  width: 19rem;
+}
+
+#order-now {
+  float: right;
+  background-color: #e8fdff;
+  border-radius: 5px;
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Capriola', sans-serif;
+  border: 1px solid black;
+  height: 4rem;
+  width: 13rem;
+  margin-right: 2rem;
+}
+
+#footer-total {
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 3rem;
+}
+
+#total-drinks {
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 2rem;
+}
+
+#checkout-header {
+  font-family: 'Capriola', sans-serif;
+  font-size: 4rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  color: #e8fdff;
+}
+
+.juice-pics-order {
+  height: 12%;
+  width: 12%;
+  border-radius: 25%;
+  float: left;
+}
+
+.order-box {
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.ordername {
+  font-family: 'Capriola', sans-serif;
+  color: #e8fdff;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 11rem;
+}
+
+.customize-menu {
+  margin-top: -2rem;
+  width: 100%;
+  background-color: #010a3a;
+  padding: 1rem;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.ingredient-pics {
+  height: 6rem;
+  width: 6rem;
+  border-radius: 50%;
+  float: left;
+  margin-bottom: 2rem;
+}
+
+#select-ingredients {
+  font-family: 'Capriola', sans-serif;
+  color: #e8fdff;
+  margin: 1rem;
+}
+
+.ingredient-headers {
+  font-family: 'Capriola', sans-serif;
+  color: #e8fdff;
+  font-size: 1.5rem;
+  margin: 1rem;
+}
+
+label {
+  color: #e8fdff;
+  font-family: 'Capriola', sans-serif;
+  margin-left: 0.5rem;
+}
+
+input[type=checkbox]:hover {
+  box-shadow: 0px 0px 10px #1300ff;
+}
+
+.ingredient-price {
+  color: #e8fdff;
+  font-family: 'Capriola', sans-serif;
+  margin-left: 0.5rem;
 }
 
 footer {
@@ -9608,7 +9785,7 @@ footer {
   z-index: 1;
 }
 
-#footer-total {
+#footer-total-checkout {
   font-family: 'Capriola', sans-serif;
   font-size: 2rem;
   float: left;
@@ -9617,7 +9794,7 @@ footer {
   margin-top: 0.8rem;
 }
 
-#total-drinks {
+#total-drinks-checkout {
   font-family: 'Capriola', sans-serif;
   font-size: 2rem;
   float: left;
@@ -9627,7 +9804,6 @@ footer {
 }
 
 #checkout-button {
-  float: right;
   background-color: #e8fdff;
   border-radius: 5px;
   color: black;
@@ -9637,5 +9813,6 @@ footer {
   border: 1px solid black;
   height: 4rem;
   width: 13rem;
-  margin-right: 2rem;
+  margin-top: 2.5rem;
+  margin-left: 1rem;
 }
