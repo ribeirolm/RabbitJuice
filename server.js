@@ -6,6 +6,7 @@ const PORT        = process.env.PORT || 8080;
 const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const cookieParser= require("cookie-parser");
+// const cookies     = require("js-cookie")
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 const app         = express();
@@ -47,33 +48,33 @@ app.use("/api", usersRoutes(knex));
 
 // Render home page
 app.get("/", (req, res) => {
-  let templateVars = {
-    // drinks : req.params.`drink id`,
-    // drink_counter: req.params.`total counter`
-  };
-  res.render("index.ejs", templateVars);
+
+  //Need to start a session to track the customer's order
+  res.render("index.ejs");
 })
 
 // Getting checkout without ordering returns an error message
 app.get("/checkout", (req, res) => {
-  res.render("checkout.ejs");
+    res.render("checkout.ejs");
 });
 
 // Selecting next button on homepage redirects user to checkout page
 app.post("/next", (req, res) => {
-  res.redirect("/checkout")
+  //We need to pass the session information to the checkout page
+  res.redirect("/checkout");
 })
 
 // Selecting edit order button on the checkout page redirects the user to the homepage with order populated
 app.post("/checkout/edit", (req, res) => {
-// Given I am a customer that has selected juices to order ,
-// And I am on the checkout page,
-// When I select the "edit order" button,
-// Then I should be redirected to the homepage that is populated with my order information
+  // Given I am a customer that has selected juices to order ,
+  // And I am on the checkout page,
+  // When I select the "add more"/"edit" button,
+  // Then I should be redirected to the homepage that is populated with my order information
+  // Need to pass the session information to the homepage so the homepage indicates what has been selected
   res.redirect("/")
 })
 
-// Selecting confirm button on the checkout page redirects the user to the confirmed page
+// Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
 app.post("/checkout/confirm", (req, res) => {
   client.messages
   .create({
@@ -82,7 +83,7 @@ app.post("/checkout/confirm", (req, res) => {
     to: process.env.MY_PHONE_NUMBER,
   })
   .then(message => console.log(message.sid));
-  res.redirect("/checkout/confirmed")
+  res.redirect("/")
 })
 
 // Getting business page renders business page html
@@ -94,10 +95,10 @@ app.get("/business", (req, res) => {
 app.post("/time-entered", (req, res) => {
   client.messages
     .create({
-       body: 'Your order has been processed and will be ready in <number> minutes',
+       body: 'Your order has been processed and will be ready in' +  + 'minutes',
        from: '+16477244390',
-       // to: process.env.MY_PHONE_NUMBER,
-       to: `retrieve this from the business page order object?`
+       to: process.env.MY_PHONE_NUMBER,
+       // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
