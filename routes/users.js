@@ -6,19 +6,29 @@ const router  = express.Router();
 module.exports = (knex) => {
 
   // retrieve all preset drink information for display on the homepage
-  router.get("/", (req, res) => {
-     knex
-      .select("name")
+  router.get("/preset", (req, res) => {
+      knex
+      .select('*')
       .from("preset_drinks")
       .then((results) => {
-        res.json(results);
-    });
+      res.json(results);
+    });  
   })
+
+  // retreive all ingredient information for display on the homepage
+  router.get("/ingredients", (req, res) => {
+    knex
+    .select('*')
+    .from("ingredients")
+    .then((results) => {
+    res.json(results);
+  });  
+})
 
   //retrieve all ingredients for "make your own" drink for display on the checkout page
   router.get("/checkout", (req, res) => {
     knex
-      .select("name", "price")
+      .select()
       .from("ingredients")
       .then((results) => {
         res.json(results);
@@ -31,7 +41,7 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("orders")
-      .where("time_finish", null)
+      .where("status", "outstanding")
       .then((results) => {
         res.json(results);
       });
