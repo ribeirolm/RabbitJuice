@@ -11,6 +11,7 @@
 
 let totalCounter = 0;
 let totalPrice = 0;
+let cart = {};
 $(document).ready(function() {
   
 function updateTotal(total){
@@ -18,20 +19,45 @@ function updateTotal(total){
     totalCounter = 0;
   }
   else{
+    total = totalPriceSum(cart);
   $("#body-footer .total").text(`${total} Juice(s)`);
+  }
+}
+
+function totalPriceSum( obj ) {
+  var sum = 0;
+  for( var i in obj ) {
+    if( obj.hasOwnProperty(i) ) {
+      sum += parseFloat(obj[i]);
+    }
+  }
+  return sum;
+}
+
+function updateTotalPrice(total){
+  if (total < 0){
+    totalPrice = 0;
+  }
+
+  else{
+    $("#body-footer #footer-total").text(`$${total} Total`);
   }
 }
 
   $(".increase").on("click", function (event)
   {
 
-    console.log(event);
+    let price = event.target.previousSibling.previousSibling.innerHTML;
+    let priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
+    
+    let itemId = event.target.nextSibling.nextSibling.id;
+
     
     let counter = event.target.nextSibling.nextSibling.innerHTML;
-
+    console.log(event);
     totalCounter++;
     counter++;
-    
+
     if (counter > 0) {
       $(event.target.nextSibling.nextSibling).removeClass("hide");
     }
@@ -42,19 +68,38 @@ function updateTotal(total){
       $(event.target.nextSibling.nextSibling).removeClass("smaller");
     }
     $(event.target.nextSibling.nextSibling).text(counter);
+
+      if (!Object.keys(cart).includes(itemId)){
+        cart[itemId] = 1;
+      }
+      else {
+        cart[itemId]++;
+      }
+
+      totalPrice += cart[itemId] * priceNumber;
+    console.log(cart);
     updateTotal(totalCounter);
+    updateTotalPrice(totalPrice);
   
 });
 
 $(".decrease").on("click", function (event)
 {
   let counter = event.target.previousSibling.previousSibling.innerHTML;
+  let price = event.target.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+  let priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
+  let itemId = event.target.previousSibling.previousSibling.id;
   
+  if (cart[itemId] < 1 || !Object.keys(cart).includes(itemId)){
+    cart[itemId] = 0;
+  }
   totalCounter--;
   counter--;
+  cart[itemId]--;
   
   if (counter < 0){
     counter = 0;
+    cart[itemId] = 0;
   }
   else if (counter < 10){
     $(event.target.previousSibling.previousSibling).removeClass("smaller");
@@ -62,7 +107,14 @@ $(".decrease").on("click", function (event)
   if (counter === 0){
     $(event.target.previousSibling.previousSibling).addClass("hide");
   }
+
   $(event.target.previousSibling.previousSibling).text(counter);
-  updateTotal(totalCounter);
+  if (counter < 1 || cart[itemId] < 1){
+    totalPrice = totalPrice + 0;
+  }
+  totalPrice = totalPrice - priceNumber;
+    updateTotalPrice(totalPrice);
+    updateTotal(totalCounter);
+  console.log(cart);
 });
 });
