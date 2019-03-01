@@ -20,7 +20,7 @@ function updateTotal(total){
   }
   else{
     total = totalPriceSum(cart);
-  $("#body-footer .total").text(`${total} Juice(s)`);
+  $("#total-drinks").text(`${total} Juice(s)`);
   }
 }
 
@@ -40,7 +40,7 @@ function updateTotalPrice(total){
   }
 
   else{
-    $("#body-footer #footer-total").text(`$${total} Total`);
+    $("#footer-total").text(`$${total} Total`);
   }
 }
 
@@ -57,9 +57,11 @@ function updateTotalPrice(total){
     console.log(event);
     totalCounter++;
     counter++;
+    console.log(event.target.nextSibling.nextSibling.nextSibling.nextSibling);
 
     if (counter > 0) {
       $(event.target.nextSibling.nextSibling).removeClass("hide");
+      $(event.target.nextSibling.nextSibling.nextSibling.nextSibling).addClass("show-button");
     }
     if (counter > 9){
       $(event.target.nextSibling.nextSibling).addClass("smaller");
@@ -76,7 +78,7 @@ function updateTotalPrice(total){
         cart[itemId]++;
       }
 
-      totalPrice += cart[itemId] * priceNumber;
+      totalPrice += priceNumber;
     console.log(cart);
     updateTotal(totalCounter);
     updateTotalPrice(totalPrice);
@@ -106,12 +108,10 @@ $(".decrease").on("click", function (event)
   }
   if (counter === 0){
     $(event.target.previousSibling.previousSibling).addClass("hide");
+    $(this).removeClass("show-button");
   }
 
   $(event.target.previousSibling.previousSibling).text(counter);
-  if (counter < 1 || cart[itemId] < 1){
-    totalPrice = totalPrice + 0;
-  }
   totalPrice = totalPrice - priceNumber;
     updateTotalPrice(totalPrice);
     updateTotal(totalCounter);
