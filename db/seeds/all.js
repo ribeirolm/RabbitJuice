@@ -33,11 +33,11 @@ exports.seed = function(knex, Promise) {
 ])).then(() => Promise.all([
   knex('preset_drinks').insert({id: 1, name: 'Berry Juice', price: '6.25', img: '/public/images/berry.jpg'}),
   knex('preset_drinks').insert({id: 2, name: 'Strawberrry Banana Juice', price: '6.25', img: '/public/images/straw-banana.jpg'}),
-  knex('preset_drinks').insert({id: 3, name: 'Tropical Juice', price: '7.50', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 4, name: 'Green Juice', price: '7.50', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 5, name: 'Veggie Juice', price: '8.25', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 6, name: 'Orange Mango Juice', price: '6.25', img: '/public/images/berry.jpg'}),
-  knex('preset_drinks').insert({id: 7, name: 'Red Juice', price: '7.50', img: '/public/images/berry.jpg'})
+  knex('preset_drinks').insert({id: 3, name: 'Tropical Juice', price: '7.50', img: '/public/images/tropical.jpg'}),
+  knex('preset_drinks').insert({id: 4, name: 'Green Juice', price: '7.50', img: '/public/images/green.jpg'}),
+  knex('preset_drinks').insert({id: 5, name: 'Veggie Juice', price: '8.25', img: '/public/images/veggie.jpg'}),
+  knex('preset_drinks').insert({id: 6, name: 'Orange Mango Juice', price: '6.25', img: '/public/images/orange-mango.jpg'}),
+  knex('preset_drinks').insert({id: 7, name: 'Red Juice', price: '7.50', img: '/public/images/red.jpg'})
 
 ])).then(() => Promise.all([
 
