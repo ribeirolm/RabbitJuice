@@ -98,6 +98,61 @@ module.exports = (knex) => {
       // res.json(customizedResults)
   })
 
+  router.post("/", (req, res) => {
+    knex.insert({
+      name: "name", 
+      phone_number: "phoneNum", 
+      status: 'outstanding'
+    }).into("orders")
+    .then(function (results) {
+        return knex.insert({'preset_drink_id': 1}).into("orders_lines")
+    })
+  })
+
+  router.post("/checkout", (req, res) => {
+
+    
+
+    knex.insert({
+      customized_drink_id: 3,
+      ingredient_id: 1,
+  
+    })
+
+  }
+
+// addDateTime(dateArray) {
+
+//     console.log(dateArray);
+
+//     async function insert(dateArray) {
+//         try{
+//             for (let i = 0; i < dateArray.length; i++) {
+//                 let tempDateTime = new Date(dateArray[i].dateTime)
+
+//                 await this.knex(dateTimes).insert({
+//                     date: tempDateTime.toDateString(),
+//                     start_time: tempDateTime.toTimeString().replace("GMT+0800", ""),
+//                     iso_string: tempDateTime.toISOString(),
+//                     event_id: dateArray[i].event_id
+//                 }).returning("event_id");
+//             }
+//         } catch (err) {
+//             console.log(err);
+//         }
+//     }
+
+//     insert(dateArray);
+// }
+
+
+  })
+
+  router.post("/business", (req, res) => {
+  
+    
+
+  })
 
   return router;
 
