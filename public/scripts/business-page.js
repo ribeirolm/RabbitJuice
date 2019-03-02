@@ -71,9 +71,9 @@ $(document).ready(function(){
 
     //To change the class of an order on the selection of "pick up"
       $("#order").on("click", function (event){
-        var $order = $(event.target.parentElement;
-        console.log($order);
-        $order.addClass("hide");
+        // var $order = $(event.target.sibli;
+        // console.log($order);
+        $(this).addClass("hide");
       });
 
     //Function to load all orders

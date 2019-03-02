@@ -9493,6 +9493,10 @@ footer.line-item {
   font-weight: 900;
 }
 
+.hide {
+  display: none;
+}
+
 #nav-bar {
   height: 7rem;
   width: 100%;
