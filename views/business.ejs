@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/styles/business.css" type="text/css" />
 
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="/scripts/business-page.js"></script>
+    <!-- <script type="text/javascript" src="/scripts/business-page.js"></script> -->
 
   </head>
 
@@ -41,11 +41,11 @@
             <h6>Ingredients: ingredients needed for custom drink</h6>
           </div>
           <footer class="line-item">
-            <form id="newOrder" method="POST" action="/time-entered">
+            <form id="newOrder" method="POST" action="/business/time-entered">
               <h4>Minutes to completion:</h4>
               <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
-              <textarea id="minutes"class = "textarea" name="text" placeholder="17"></textarea>
-              <input method="POST" action="/time-entered" type="submit" value="Send to Customer">
+              <textarea name="minutes"class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
+              <input method="POST" action="/business/time-entered" type="submit" value="Send to Customer">
             </form>
             <input method="POST" action="/business/:order_id/pickup" type="submit" value="Picked Up">
           </footer>

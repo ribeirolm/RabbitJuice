@@ -87,13 +87,12 @@ $(document).ready(function(){
           if($time === 0 || $time === null){
             document.getElementById("#err-noTime").hidden = false;
           } else {
-          $("#err-noTime").slideUp("slow");
-          $.post( "/business", $("#newOrder").serialize());
+          $.post("/business/time-entered", $("#newOrder").serialize());
           location.reload();
         }
     });
 
-renderOrders(orders);
+renderOrders();
 
   //Function to load all orders
     function loadOrders(){
