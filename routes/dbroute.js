@@ -99,27 +99,27 @@ module.exports = (knex) => {
   })
 
   router.post("/", (req, res) => {
-    knex.insert({
-      name: "name", 
-      phone_number: "phoneNum", 
-      status: 'outstanding'
-    }).into("orders")
-    .then(function (results) {
-        return knex.insert({'preset_drink_id': 1}).into("orders_lines")
-    })
-  })
+  //   knex.insert({
+  //     name: "name", 
+  //     phone_number: "phoneNum", 
+  //     status: 'outstanding'
+  //   }).into("orders")
+  //   .then(function (results) {
+  //       return knex.insert({'preset_drink_id': 1}).into("orders_lines")
+  //   })
+  // })
 
-  router.post("/checkout", (req, res) => {
+  // router.post("/checkout", (req, res) => {
 
     
 
-    knex.insert({
-      customized_drink_id: 3,
-      ingredient_id: 1,
+  //   knex.insert({
+  //     customized_drink_id: 3,
+  //     ingredient_id: 1,
   
-    })
+  //   })
 
-  }
+  // }
 
 // addDateTime(dateArray) {
 
