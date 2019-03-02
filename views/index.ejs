@@ -31,6 +31,7 @@
 
       <!-- Sidebar with Name, Number and Order Now Button -->
       <div class="wrapper">
+<<<<<<< HEAD
         <nav id="sidebar">
           <div class="sidebar-header">
             <h3 id="your-order">Welcome!</h3>
@@ -54,6 +55,35 @@
               <h5 id="total-drinks">0 Juice(s)</h5>
             </div>
         </nav>
+=======
+          <!-- Sidebar -->
+          <nav id="sidebar">
+              <div class="sidebar-header">
+                  <h3 id="your-order">Welcome!</h3>
+              </div>
+              <div class="row">        
+                          <form method="POST" action="/checkout/confirm" id="userForm">
+                            <h3 id="name-tag">Name:</h3>
+                            <textarea class = "textarea" name="name" id="name-field" placeholder="Please Enter Your Name"></textarea>
+                            <h3 id="number-tag">PhoneNumber:</h3>
+                            <textarea class = "textarea" name="phone_number" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
+                          </div class="row">
+                            <div><button type="submit" value="Next" id="checkout-button">Next</button>
+                              <div id="field-error"></div>
+                          </form>
+                        </div>
+                    <div class="row">
+                    <h5 id="footer-total">
+                          $0 Total
+                    </h5>
+                      </div class="row">
+                    <div>
+                      <h5 id="total-drinks">
+                          0 Juice(s)
+                      </h5>
+                    </div>
+          </nav>
+>>>>>>> tidyup
 
     <!-- Main Body with all juices -->
     <main id="homepage-main">

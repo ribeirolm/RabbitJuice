@@ -56,6 +56,7 @@ $(document).ready(function(){
         return $order;
       }
 
+<<<<<<< HEAD
     //When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.
     //If there is no value in time field being submitted an error message is displayed.
       // $("#newOrder").submit(function(event) {
@@ -68,6 +69,22 @@ $(document).ready(function(){
       //       location.reload();
       //     }
       // });
+=======
+  //When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.
+  //If there is no value in time field being submitted an error message is displayed.
+    $("#newOrder").submit(function(event) {
+      event.preventDefault();
+      let $time = $("#minutes").val().length;
+          if($time === 0 || $time === null){
+            document.getElementById("#err-noTime").hidden = false;
+          } else {
+          $.post("/business/time-entered", $("#newOrder").serialize());
+          location.reload();
+        }
+    });
+
+// renderOrders(orders);
+>>>>>>> tidyup
 
     //To change the class of an order on the selection of "pick up"
       $("#order").on("click", function (event){
