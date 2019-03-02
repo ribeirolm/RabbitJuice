@@ -98,20 +98,11 @@ app.get("/business", (req, res) => {
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
-<<<<<<< HEAD
-app.post("/time-entered", (req, res) => {
-  let minutes = req.body.minutes;
-  client.messages
-    .create({
-       body: 'Your order has been processed and will be ready in' + minutes + 'minutes',
-       // <number> in body needs to be updated with the number in minutes from the database
-=======
 app.post("/business/time-entered", (req, res) => {
   let minutes = req.body.minutes;
   client.messages
     .create({
        body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
->>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
        from: '+16477244390',
        to: process.env.MY_PHONE_NUMBER,
        // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
