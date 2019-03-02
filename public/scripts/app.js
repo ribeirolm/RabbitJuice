@@ -18,7 +18,6 @@
 
 //   console.log(presets)
 // });
-<<<<<<< HEAD
 
 $(document).ready(function() {
   //Setting up variables
@@ -65,6 +64,11 @@ $(document).ready(function() {
     $("#total-drinks").text(`${total} Juice(s)`);
     }
   }
+
+  function updatePresetsSelected(value){
+    $("#preset-selected").val(JSON.stringify(value));
+  }
+  console.log($("#preset-selected").val());
 
   //Sums up the number of Juices added in the cart object
   function totalPriceSum( obj ) {
