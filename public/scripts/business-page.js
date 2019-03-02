@@ -94,7 +94,7 @@ $(document).ready(function(){
         }
     });
 
-renderOrders(orders);
+// renderOrders(orders);
 
   //Function to load all orders
     function loadOrders(){

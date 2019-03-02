@@ -9730,19 +9730,6 @@ main {
 }
 
 .customize-menu {
-<<<<<<< HEAD
-  margin-top: -2rem;
-  width: 100%;
-  background-color: #010a3a;
-  padding: 1rem;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
-}
-
-.ingredient-pics {
-  height: 6rem;
-  width: 6rem;
-=======
   margin-right: 0rem;
   margin-left: 65rem;
   margin-top: 7rem;
@@ -9764,7 +9751,6 @@ main {
 .ingredient-pics {
   height: 4rem;
   width: 4rem;
->>>>>>> 5d2d5a0ec7fc0e17cb81cf98199b85d94f5b8a48
   border-radius: 50%;
   float: left;
   margin-bottom: 2rem;
@@ -9774,8 +9760,6 @@ main {
   font-family: 'Capriola', sans-serif;
   color: #e8fdff;
   margin: 1rem;
-<<<<<<< HEAD
-=======
   display: inline;
 }
 
@@ -9786,7 +9770,6 @@ main {
   font-family: 'Capriola', sans-serif;
   font-size: 1.5rem;
   border-radius: 5px;
->>>>>>> 5d2d5a0ec7fc0e17cb81cf98199b85d94f5b8a48
 }
 
 .ingredient-headers {
@@ -9812,8 +9795,6 @@ input[type=checkbox]:hover {
   margin-left: 0.5rem;
 }
 
-<<<<<<< HEAD
-=======
 #field-error {
   display: none;
   background-color: #C75050;
@@ -9828,7 +9809,6 @@ input[type=checkbox]:hover {
   border-bottom-right-radius: 5px;
 }
 
->>>>>>> 5d2d5a0ec7fc0e17cb81cf98199b85d94f5b8a48
 footer {
   height: 6rem;
   width: 100%;

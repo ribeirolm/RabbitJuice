@@ -1,44 +1,76 @@
+//function to retreive all preset drink data from /api/presets
+//refactor later
 
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     for(user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
-//     }
-//   });
-// });
-$(() => {
-  $.ajax(
-    {
-      method: 'GET',
-      url:'/api/preset'
-    })
-}).done((presets) => {
+function loadPresets(){
+  $.ajax({
+    method: 'GET',
+    url:'/api/preset'
+  }).done((presets) => {
+    console.log(presets)
+ 
 
-  console.log(presets)
+    presets.forEach(juice => {
+      switch (juice.id) {
+        case 1:
+        $('.price').eq(0).text(`$${juice.price}`)
+        $('.juice-pics').eq(0).text(`$${juice.img}`)
+        break;
 
+        case 2:
+        $('.price').eq(1).text(`$${juice.price}`)
+        $('.juice-pics').eq(1).text(`$${juice.img}`)
+        break;
+        
+        case 3:
+        $('.price').eq(2).text(`$${juice.price}`)
+        $('.juice-pics').eq(2).text(`$${juice.img}`)
+        break;
+        
+        case 4:
+        $('.price').eq(3).text(`$${juice.price}`)
+        $('.juice-pics').eq(3).text(`$${juice.img}`)
+        break;
+        
+        case 5:
+        $('.price').eq(4).text(`$${juice.price}`)
+        $('.juice-pics').eq(4).text(`$${juice.img}`)
+        break;
+        
+        case 6:
+        $('.price').eq(5).text(`$${juice.price}`)
+        $('.juice-pics').eq(5).text(`$${juice.img}`)
+        break;
+        
+        case 7:
+        $('.price').eq(6).text(`$${juice.price}`)
+        $('.juice-pics').eq(6).text(`$${juice.img}`)
+        break;
+      }
+    });
+  })
+}
 
+function loadCustomizeIngredients() {
+  // $.ajax({
+  //   method: 'GET',
+  //   url:'/api/preset'
+  // }).done((presets) => {
+}
 
-})
-
+let totalCounter = 0;
+let totalPrice = 0;
+let cart = {};
 $(document).ready(function() {
-//Setting up variables
-//Counts the total items user has selected
-var totalCounter = 0;
-//Sums up the total price for all juices
-var totalPrice = 0;
-//Adds the items into an object with the counter Id as a key and the number added as a value
-var cart = {};
-//Adds all the ingredient prices together
-var totalIngredientPrice = 0;
-//Adds all the slected ingredients into an array based on their id
-var checkedItems = [];
-//Naming an error message for user input fields
-var errorMsg = $('#field-error');
 
-//Displays an error message if a user does not enter a Name or Number or if a Number isn't 10 digits
+  //calling preset drink data
+loadPresets()
+
+var totalCounter = 0;
+var totalPrice = 0;
+var cart = {};
+
+const errorMsg = $('#field-error');
+
 var $credentials = $('#userForm');
 $credentials.submit(function(event){
   event.preventDefault();
@@ -56,10 +88,36 @@ $credentials.submit(function(event){
   }
   else{
     errorMsg.slideUp("medium");
-    $(this).unbind('submit').submit();
+    $(this).unbind('submit').submit()
   }
 });
 
+console.log($credentials[0][1].value);
+
+
+
+// $tweetForm.submit(function(event) {
+//   event.preventDefault();
+//   var $tweet = $($tweetForm.children("#compose-tweet-area")[0]).val();
+//   if ($tweet === null || $tweet === "" ){
+//     errorMsg.slideDown();
+//     errorMsg.css('#tweet-error');
+//     errorMsg.html('<i class="fas fa-exclamation"></i> Unable to post empty tweet');
+//   }
+//   else if ($tweet.length > 140){
+//     errorMsg.slideDown();
+//     errorMsg.css('#tweet-error');
+//     errorMsg.html('<i class="fas fa-exclamation"></i> Tweet cannot be longer than 140 characters');
+//   }
+//   else{
+//     errorMsg.slideUp("medium");
+//     $.post('/tweets', $tweetForm.serialize())
+//   .then(populateTweets);
+//   $('#compose-tweet-area').val("");
+//   let counter = $("#compose-tweet-area").siblings(".counter");
+//   counter[0].innerText = 140;
+//   }
+// });
   
 function updateTotal(total){
   if (total < 0){
@@ -171,40 +229,7 @@ $(".increase").on("click", function (event)
 $("#increase-myo").on("click", function (event)
 {
   var $customMenu = $(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]);
-  $customMenu.slideDown().addClass("customize-menu-show");
-});
-
-function arrayRemove(arr, value) {
-
-  return arr.filter(function(ele){
-      return ele != value;
-  });
-
-}
-
-$('.checkbox').on("click", function(event) {
-  var price = event.target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML;
-  var priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
-  if (event.target.checked === true){
-      totalIngredientPrice = totalIngredientPrice + priceNumber;
-      totalPrice = totalPrice + totalIngredientPrice;
-      checkedItems.push(event.target.id);
-      updateTotalPrice(totalPrice);
-  } else{
-      totalIngredientPrice = totalIngredientPrice - priceNumber;
-      totalPrice = totalPrice - priceNumber;
-      checkedItems = arrayRemove(checkedItems, event.target.id);
-      updateTotalPrice(totalPrice);
-  }
-
-  $("#myo-button").on("click", function(event) {
-    $(event.target.parentNode.parentNode).slideUp();
-    
-    console.log(event.target.parentNode.parentNode.className);
-  });
-  
-  console.log(totalIngredientPrice);
-  console.log(checkedItems);
+  $customMenu.addClass("customize-menu-show");
 });
 
 });

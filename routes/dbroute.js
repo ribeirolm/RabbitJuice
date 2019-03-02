@@ -50,17 +50,10 @@ module.exports = (knex) => {
       .groupBy('orderNum', 'orderLineNum','customerName','phoneNum', 'estimatedTime')
       .where({'orders.id': 2})
       .whereNull('orders_lines.preset_drink_id')
-      
-      // .where({'orders.id': 3})
-      // .whereNull('orders_lines.preset_drink_id')
 
-      // array1.concat(catarr)
       res.json(presetResults.concat(customizedResults))
-      // res.json(customizedResults)
+
   })
-
-
-
 
   //retrieve orders with no finished time for display on the order queue in the business page
   //need to join with users table to pull the users name and phone number to display within the order
@@ -89,68 +82,8 @@ module.exports = (knex) => {
       .groupBy('orderNum', 'orderLineNum','customerName','phoneNum', 'estimatedTime')
       .where({'orders.status': 'outstanding'})
       .whereNull('orders_lines.preset_drink_id')
-      
-      // .where({'orders.id': 3})
-      // .whereNull('orders_lines.preset_drink_id')
 
-      // array1.concat(catarr)
-        res.json(presetResults.concat(customizedResults))
-      // res.json(customizedResults)
-  })
-
-  router.post("/", (req, res) => {
-  //   knex.insert({
-  //     name: "name", 
-  //     phone_number: "phoneNum", 
-  //     status: 'outstanding'
-  //   }).into("orders")
-  //   .then(function (results) {
-  //       return knex.insert({'preset_drink_id': 1}).into("orders_lines")
-  //   })
-  // })
-
-  // router.post("/checkout", (req, res) => {
-
-    
-
-  //   knex.insert({
-  //     customized_drink_id: 3,
-  //     ingredient_id: 1,
-  
-  //   })
-
-  // }
-
-// addDateTime(dateArray) {
-
-//     console.log(dateArray);
-
-//     async function insert(dateArray) {
-//         try{
-//             for (let i = 0; i < dateArray.length; i++) {
-//                 let tempDateTime = new Date(dateArray[i].dateTime)
-
-//                 await this.knex(dateTimes).insert({
-//                     date: tempDateTime.toDateString(),
-//                     start_time: tempDateTime.toTimeString().replace("GMT+0800", ""),
-//                     iso_string: tempDateTime.toISOString(),
-//                     event_id: dateArray[i].event_id
-//                 }).returning("event_id");
-//             }
-//         } catch (err) {
-//             console.log(err);
-//         }
-//     }
-
-//     insert(dateArray);
-// }
-
-
-  })
-
-  router.post("/business", (req, res) => {
-  
-    
+      res.json(presetResults.concat(customizedResults))
 
   })
 
