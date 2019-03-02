@@ -41,19 +41,11 @@
             <h6>Ingredients: ingredients needed for custom drink</h6>
           </div>
           <footer class="line-item">
-<<<<<<< HEAD
-            <form id="newOrder" method="POST" action="/time-entered">
-              <h4>Minutes to completion:</h4>
-              <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
-              <textarea id="minutes"class = "textarea" name="text" placeholder="17"></textarea>
-              <input method="POST" action="/time-entered" type="submit" value="Send to Customer">
-=======
             <form id="newOrder" method="POST" action="/business/time-entered">
               <h4>Minutes to completion:</h4>
               <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
               <textarea name="minutes"class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
               <input method="POST" action="/business/time-entered" type="submit" value="Send to Customer">
->>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
             </form>
             <input method="POST" action="/business/:order_id/pickup" type="submit" value="Picked Up">
           </footer>
