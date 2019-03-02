@@ -60,6 +60,10 @@ app.get("/checkout", (req, res) => {
     res.render("checkout.ejs");
 });
 
+app.get("/confirm", (req, res) => {
+  res.render("confirm.ejs");
+})
+
 // Selecting next button on homepage redirects user to checkout page
 app.post("/next", (req, res) => {
   //We need to pass the session information to the checkout page
@@ -67,25 +71,25 @@ app.post("/next", (req, res) => {
 })
 
 // Selecting edit order button on the checkout page redirects the user to the homepage with order populated
-app.post("/checkout/edit", (req, res) => {
-  // Given I am a customer that has selected juices to order ,
-  // And I am on the checkout page,
-  // When I select the "add more"/"edit" button,
-  // Then I should be redirected to the homepage that is populated with my order information
-  // Need to pass the session information to the homepage so the homepage indicates what has been selected
-  res.redirect("/")
-})
+// app.post("/checkout/edit", (req, res) => {
+//   // Given I am a customer that has selected juices to order ,
+//   // And I am on the checkout page,
+//   // When I select the "add more"/"edit" button,
+//   // Then I should be redirected to the homepage that is populated with my order information
+//   // Need to pass the session information to the homepage so the homepage indicates what has been selected
+//   res.redirect("/")
+// })
 
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
 app.post("/checkout/confirm", (req, res) => {
   client.messages
   .create({
-    body: 'A new order has been placed! See <link> for details',
+    body: 'A new order has been placed! See </business> for details',
     from: '+16477244390',
     to: process.env.MY_PHONE_NUMBER,
   })
   .then(message => console.log(message.sid));
-  res.redirect("/")
+  res.redirect("/confirm")
 })
 
 // Getting business page renders business page html with only outstanding orders being displayed
@@ -94,12 +98,11 @@ app.get("/business", (req, res) => {
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
-app.post("/time-entered", (req, res) => {
+app.post("/business/time-entered", (req, res) => {
   let minutes = req.body.minutes;
   client.messages
     .create({
-       body: 'Your order has been processed and will be ready in' + minutes + 'minutes',
-       // <number> in body needs to be updated with the number in minutes from the database
+       body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
        from: '+16477244390',
        to: process.env.MY_PHONE_NUMBER,
        // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
