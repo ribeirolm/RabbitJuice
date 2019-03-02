@@ -9,6 +9,28 @@
 //     }
 //   });
 // });
+<<<<<<< HEAD
+
+
+$(() => {
+  $.ajax(
+    {
+      method: 'GET',
+      url:'/api/preset'
+    })
+}).done((presets) => {
+
+  console.log(presets)
+
+
+
+})
+
+let totalCounter = 0;
+let totalPrice = 0;
+let cart = {};
+=======
+>>>>>>> 5d2d5a0ec7fc0e17cb81cf98199b85d94f5b8a48
 $(document).ready(function() {
 
 var totalCounter = 0;
