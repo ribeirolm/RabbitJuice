@@ -4,15 +4,18 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Rabbit Juice - Homepage</title>
+
     <!-- Linking Logo Font -->
     <link href="https://fonts.googleapis.com/css?family=Capriola" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c:400,900" rel="stylesheet">
 
+    <!-- Style Sheets -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
 
+    <!-- Necessary scripts -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
   </head>
@@ -26,47 +29,37 @@
         <span class="info">The best juice you can get!</span>
       </nav>
 
+      <!-- Sidebar with Name, Number and Order Now Button -->
       <div class="wrapper">
-          <!-- Sidebar -->
-          <nav id="sidebar">
-              <div class="sidebar-header">
-                  <h3 id="your-order">Welcome!</h3>
-              </div>
-<<<<<<< HEAD
-              <div class="row">
-                          <form method="POST" action="/checkout/confirm" id="userForm">
-=======
-              <div class="row">
-                          <form method="POST" action="/next">
->>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
-                            <h3 id="name-tag">Name:</h3>
-                            <textarea class = "textarea" name="text" id="name-field" placeholder="Please Enter Your Name"></textarea>
-                            <h3 id="number-tag">PhoneNumber:</h3>
-                            <textarea class = "textarea" name="text" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
-                          </div class="row">
-<<<<<<< HEAD
-                            <div><button method="POST" action="/next/"" type="submit" value="Next" id="checkout-button">Next</button>
-                              <div id="field-error"></div>
-=======
-                            <div><button method="POST" action="/next"" type="submit" value="Next" id="checkout-button">Next</button>
->>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
-                          </form>
-                        </div>
-                    <div class="row">
-                    <h5 id="footer-total">
-                          $0 Total
-                    </h5>
-                      </div class="row">
-                    <div>
-                      <h5 id="total-drinks">
-                          0 Juice(s)
-                      </h5>
-                    </div>
-          </nav>
+        <nav id="sidebar">
+          <div class="sidebar-header">
+            <h3 id="your-order">Welcome!</h3>
+          </div>
+          <div class="row">
+            <form method="POST" action="/checkout/confirm" id="userForm">
+            <h3 id="name-tag">Name:</h3>
+            <textarea class = "textarea" name="text" id="name-field" placeholder="Please Enter Your Name"></textarea>
+            <h3 id="number-tag">PhoneNumber:</h3>
+            <textarea class = "textarea" name="text" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
+          </div>
+          <input type="hidden" id="berryjuice" name="" value="3487">
+          <div><button method="POST" type="submit" value="Order Now" id="checkout-button">Order Now</button>
+            <div id="field-error"></div>
+          </div>
+            </form>
+            <div class="row">
+              <h5 id="price-total">$0 Total</h5>
+            </div>
+            <div>
+              <h5 id="total-drinks">0 Juice(s)</h5>
+            </div>
+        </nav>
 
+    <!-- Main Body with all juices -->
     <main id="homepage-main">
       <div class="container">
         <div class="row home-row">
+          <!-- Berry Juice -->
           <div class="col home-col" align="center" id="berry-col">
             <img class="juice-pics" src="images/berry.jpg">
             <h4 class="price">$6.25</h4>
@@ -74,174 +67,191 @@
             <h4 class="amount-clicked hide" id="berry-count">0</h4>
             <button type="submit" class="decrease" id="decrease-berry">-</button>
           </div>
+          <!-- Green Juice -->
           <div class="col home-col" align="center" id="green-col">
-              <img class="juice-pics" src="images/green.jpg">
-              <h4 class="price">$7.50</h4>
-              <button type="submit" class="increase" id="increase-green">+</button>
-              <h4 class="amount-clicked hide" id="green-count">0</h4>
+            <img class="juice-pics" src="images/green.jpg">
+            <h4 class="price">$7.50</h4>
+            <button type="submit" class="increase" id="increase-green">+</button>
+            <h4 class="amount-clicked hide" id="green-count">0</h4>
             <button type="submit" class="decrease" id="decrease-green">-</button>
           </div>
+          <!-- Mango Juice -->
           <div class="col home-col" align="center" id="mango-col">
-              <img class="juice-pics" src="images/orange-mango.jpg">
-              <h4 class="price">$6.25</h4>
-              <button type="submit" class="increase" id="increase-mango">+</button>
-              <h4 class="amount-clicked hide" id="mango-count">0</h4>
+            <img class="juice-pics" src="images/orange-mango.jpg">
+            <h4 class="price">$6.25</h4>
+            <button type="submit" class="increase" id="increase-mango">+</button>
+            <h4 class="amount-clicked hide" id="mango-count">0</h4>
             <button type="submit" class="decrease" id="decrease-mango">-</button>
           </div>
+          <!-- Red Juice -->
           <div class="col home-col" align="center" id="red-col">
-              <img class="juice-pics" src="images/red.jpg">
-              <h4 class="price">$7.50</h4>
-              <button type="submit" class="increase" id="increase-red">+</button>
-              <h4 class="amount-clicked hide" id="red-count">0</h4>
+            <img class="juice-pics" src="images/red.jpg">
+            <h4 class="price">$7.50</h4>
+            <button type="submit" class="increase" id="increase-red">+</button>
+            <h4 class="amount-clicked hide" id="red-count">0</h4>
             <button type="submit" class="decrease" id="decrease-red">-</button>
           </div>
         </div>
+
         <div class="row home-row">
-            <div class="col home-col" align="center" id="tropical-col">
-                <img class="juice-pics" src="images/tropical.jpg">
-                <h4 class="price">$7.50</h4>
-                <button type="submit" class="increase" id="increase-tropical">+</button>
-                <h4 class="amount-clicked hide" id="tropical-count">0</h4>
+          <!-- Tropical Juice -->
+          <div class="col home-col" align="center" id="tropical-col">
+            <img class="juice-pics" src="images/tropical.jpg">
+            <h4 class="price">$7.50</h4>
+            <button type="submit" class="increase" id="increase-tropical">+</button>
+            <h4 class="amount-clicked hide" id="tropical-count">0</h4>
             <button type="submit" class="decrease" id="decrease-tropical">-</button>
-            </div>
-            <div class="col home-col" align="center" id ="veggie-col">
-                <img class="juice-pics" src="images/veggie.jpg">
-                <h4 class="price">$8.25</h4>
-                <button type="submit" class="increase" id="increase-veggie">+</button>
-                <h4 class="amount-clicked hide" id="veggie-count">0</h4>
+          </div>
+          <!-- Veggie Juice -->
+          <div class="col home-col" align="center" id ="veggie-col">
+            <img class="juice-pics" src="images/veggie.jpg">
+            <h4 class="price">$8.25</h4>
+            <button type="submit" class="increase" id="increase-veggie">+</button>
+            <h4 class="amount-clicked hide" id="veggie-count">0</h4>
             <button type="submit" class="decrease" id="decrease-veggie">-</button>
-            </div>
+          </div>
+          <!-- Strawberry Banana Juice -->
             <div class="col home-col" align="center" id="banana-col">
-                <img class="juice-pics" src="images/straw-banana.jpg">
-                <h4 class="price">$6.25</h4>
-                <button type="submit" class="increase" id="increase-banana">+</button>
-                <h4 class="amount-clicked hide" id="banana-count">0</h4>
-            <button type="submit" class="decrease" id="decrease-banana">-</button>
+              <img class="juice-pics" src="images/straw-banana.jpg">
+              <h4 class="price">$6.25</h4>
+              <button type="submit" class="increase" id="increase-banana">+</button>
+              <h4 class="amount-clicked hide" id="banana-count">0</h4>
+              <button type="submit" class="decrease" id="decrease-banana">-</button>
             </div>
+            <!-- Make Your Own Juice -->
             <div class="col home-col" align="center" id="myo-col">
-                <img class="juice-pics" src="images/myo.jpg">
-                <h4 class="price-myo">Price Varies</h4>
-                <button type="submit" class="increase" id="increase-myo">+</button>
-                <h4 class="amount-clicked hide" id="myo-count">0</h4>
-            <button type="submit" class="decrease" id="decrease-myo">-</button>
+              <img class="juice-pics" src="images/myo.jpg">
+              <h4 class="price-myo">Price Varies</h4>
+              <button type="submit" class="increase" id="increase-myo">+</button>
+              <h4 class="amount-clicked hide" id="myo-count">0</h4>
+              <button type="submit" class="decrease" id="decrease-myo">-</button>
             <div class="container"></div>
           </div>
-      </div>
-
+        </div>
     </main>
 
-<<<<<<< HEAD
+    <!-- The Make Your Own Menu -->
     <section class="customize-menu" id="custom-menu">
       <div class="row">
-      <h4 id="select-ingredients">Please Select Your Ingredients</h4>
-      <span class="col"></span>
-      <button class=button id="myo-button">Ok</button>
-    </div>
-    <div class="row">
-      <h6 class="ingredient-headers">Fruits:</h6>
-    </div>
-    <div class="row">
-      <div class="col">
+        <h4 id="select-ingredients">Please Select Your Ingredients</h4>
+        <span class="col"></span>
+        <button class=button id="myo-button">Ok</button>
+      </div>
+      <div class="row">
+        <h6 class="ingredient-headers">Fruits:</h6>
+      </div>
+      <div class="row">
+        <!-- Strawberries -->
+        <div class="col">
           <input type="checkbox" name="ingredient" value="Strawberry" class="checkbox" id="1"><label for="Strawberry">Strawberries</label><br>
           <img class="ingredient-pics" src="images/strawberries.jpg">
           <h6 class=ingredient-price>$2.50</h6>
-      </div>
-      <div class="col">
+        </div>
+        <!-- Blueberries -->
+        <div class="col">
           <input type="checkbox" name="ingredient" value="Blueberry" class="checkbox" id="2"><label for="Blueberry">Blueberries</label><br>
           <img class="ingredient-pics" src="images/blueberries.jpg">
           <h6 class=ingredient-price>$2.50</h6>
         </div>
+        <!-- Bananas -->
         <div class="col">
-            <input type="checkbox" name="ingredient" value="Banana" class="checkbox" id="3"><label for="Banana">Bananas</label><br>
-            <img class="ingredient-pics" src="images/bananas.jpg">
-            <h6 class=ingredient-price>$2.50</h6>
+          <input type="checkbox" name="ingredient" value="Banana" class="checkbox" id="3"><label for="Banana">Bananas</label><br>
+          <img class="ingredient-pics" src="images/bananas.jpg">
+          <h6 class=ingredient-price>$2.50</h6>
         </div>
+        <!-- Apples -->
         <div class ="col">
-            <input type="checkbox" name="ingredient" value="Apple" class="checkbox" id="4"><label for="Apple">Apples</label><br>
-            <img class="ingredient-pics" src="images/apples.jpg">
-            <h6 class=ingredient-price>$2.75</h6>
+          <input type="checkbox" name="ingredient" value="Apple" class="checkbox" id="4"><label for="Apple">Apples</label><br>
+          <img class="ingredient-pics" src="images/apples.jpg">
+          <h6 class=ingredient-price>$2.75</h6>
         </div>
+        <!-- Mangoes -->
         <div class="col">
-            <input type="checkbox" name="ingredient" value="Mango" class="checkbox" id="5"><label for="Mango">Mangoes</label><br>
-            <img class="ingredient-pics" src="images/mangoes.jpg">
-            <h6 class=ingredient-price>$2.50</h6>
+          <input type="checkbox" name="ingredient" value="Mango" class="checkbox" id="5"><label for="Mango">Mangoes</label><br>
+          <img class="ingredient-pics" src="images/mangoes.jpg">
+          <h6 class=ingredient-price>$2.50</h6>
         </div>
-    </div>
-    <div class="row">
-        <div class="col">
-            <input type="checkbox" name="ingredient" value="Pineapple" class="checkbox" id="6"><label for="Pineapple">Pineapples</label><br>
-            <img class="ingredient-pics" src="images/pineapples.jpg">
-            <h6 class=ingredient-price>$2.50</h6>
-          </div>
-          <div class="col">
-              <input type="checkbox" name="ingredient" value="Orange" class="checkbox" id="7"><label for="Orange">Oranges</label><br>
-              <img class="ingredient-pics" src="images/oranges.jpg">
-              <h6 class=ingredient-price>$2.50</h6>
-          </div>
-          <div class="col">
-          </div>
-          <div class="col">
-          </div>
-          <div class="col">
-            </div>
       </div>
       <div class="row">
-          <h6 class="ingredient-headers">Veggies:</h6>
+        <!-- Pineapples -->
+        <div class="col">
+          <input type="checkbox" name="ingredient" value="Pineapple" class="checkbox" id="6"><label for="Pineapple">Pineapples</label><br>
+          <img class="ingredient-pics" src="images/pineapples.jpg">
+          <h6 class=ingredient-price>$2.50</h6>
+          </div>
+        <!-- Oranges -->
+        <div class="col">
+          <input type="checkbox" name="ingredient" value="Orange" class="checkbox" id="7"><label for="Orange">Oranges</label><br>
+          <img class="ingredient-pics" src="images/oranges.jpg">
+          <h6 class=ingredient-price>$2.50</h6>
+        </div>
+        <!-- Blank spaces for the grid -->
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+        <div class="col">
+        </div>
+      </div>
+
+      <div class="row">
+        <h6 class="ingredient-headers">Veggies:</h6>
         </div>
         <div class="row">
+          <!-- Carrots -->
           <div class="col">
-              <input type="checkbox" name="ingredient" value="Carrot" class="checkbox" id="8"><label for="Carrot">Carrots</label><br>
-              <img class="ingredient-pics" src="images/carrots.jpg">
-              <h6 class=ingredient-price>$2.75</h6>
+            <class="row"input type="checkbox" name="ingredient" value="Carrot" class="checkbox" id="8"><label for="Carrot">Carrots</label><br>
+            <img class="ingredient-pics" src="images/carrots.jpg">
+            <h6 class=ingredient-price>$2.75</h6>
           </div>
+          <!-- Kale -->
           <div class="col">
-              <input type="checkbox" name="ingredient" value="Kale" class="checkbox" id="9"><label for="Kale">Kale</label><br>
-              <img class="ingredient-pics" src="images/kale.jpg">
-              <h6 class=ingredient-price>$2.50</h6>
-            </div>
-            <div class="col">
-                <input type="checkbox" name="ingredient" value="Celery" class="checkbox" id="10"><label for="Celery">Celery</label><br>
-                <img class="ingredient-pics" src="images/celery.jpg">
-                <h6 class=ingredient-price>$2.75</h6>
-            </div>
-            <div class="col">
-                <input type="checkbox" name="ingredient" value="Beet" class="checkbox" id="11"><label for="Beet">Beets</label><br>
-                <img class="ingredient-pics" src="images/beets.jpg">
-                <h6 class=ingredient-price>$2.50</h6>
-            </div>
-            <div class="col">
-                <input type="checkbox" name="ingredient" value="Ginger" class="checkbox" id="12"><label for="Ginger">Ginger</label><br>
-                <img class="ingredient-pics" src="images/ginger.jpg">
-                <h6 class=ingredient-price>$3.00</h6>
-              </div>
+            <input type="checkbox" name="ingredient" value="Kale" class="checkbox" id="9"><label for="Kale">Kale</label><br>
+            <img class="ingredient-pics" src="images/kale.jpg">
+            <h6 class=ingredient-price>$2.50</h6>
           </div>
-          <div class="row">
-              <h6 class="ingredient-headers">Boosters:</h6>
-            </div>
-            <div class="row">
-              <div class="col">
-                  <input type="checkbox" name="ingredient" value="Energy" class="checkbox" id="13"><label for="Energy">Energy</label><br>
-                  <img class="ingredient-pics" src="images/energy.jpg">
-                  <h6 class=ingredient-price>$3.50</h6>
-              </div>
-              <div class="col">
-                  <input type="checkbox" name="ingredient" value="Protein" class="checkbox" id="14"><label for="Protein">Protein</label><br>
-                  <img class="ingredient-pics" src="images/protein.jpg">
-                  <h6 class=ingredient-price>$3.50</h6>
-                </div>
-                <div class="col">
-                    <input type="checkbox" name="ingredient" value="Immunity" class="checkbox" id="15"><label for="Immunity">Immunity</label><br>
-                    <img class="ingredient-pics" src="images/immunity.jpg">
-                    <h6 class=ingredient-price>$3.50</h6>
-              </div>
+          <!-- Celery -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Celery" class="checkbox" id="10"><label for="Celery">Celery</label><br>
+            <img class="ingredient-pics" src="images/celery.jpg">
+            <h6 class=ingredient-price>$2.75</h6>
+          </div>
+          <!-- Beets -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Beet" class="checkbox" id="11"><label for="Beet">Beets</label><br>
+            <img class="ingredient-pics" src="images/beets.jpg">
+            <h6 class=ingredient-price>$2.50</h6>
+          </div>
+          <!-- Ginger -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Ginger" class="checkbox" id="12"><label for="Ginger">Ginger</label><br>
+            <img class="ingredient-pics" src="images/ginger.jpg">
+            <h6 class=ingredient-price>$3.00</h6>
+          </div>
+        </div>
+        <div class="row">
+          <h6 class="ingredient-headers">Boosters:</h6>
+        </div>
+        <div class="row">
+          <!-- Energy -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Energy" class="checkbox" id="13"><label for="Energy">Energy</label><br>
+            <img class="ingredient-pics" src="images/energy.jpg">
+            <h6 class=ingredient-price>$3.50</h6>
+          </div>
+          <!-- Protein -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Protein" class="checkbox" id="14"><label for="Protein">Protein</label><br>
+            <img class="ingredient-pics" src="images/protein.jpg">
+            <h6 class=ingredient-price>$3.50</h6>
+          </div>
+          <!-- Immunity -->
+          <div class="col">
+            <input type="checkbox" name="ingredient" value="Immunity" class="checkbox" id="15"><label for="Immunity">Immunity</label><br>
+            <img class="ingredient-pics" src="images/immunity.jpg">
+            <h6 class=ingredient-price>$3.50</h6>
+          </div>
         </div>
       </section>
-
-=======
-
->>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
-    <!-- Adding Bootstrap Scripts -->
-   <!--  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
   </body>
 </html>
