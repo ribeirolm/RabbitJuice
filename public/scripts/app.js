@@ -9,14 +9,34 @@
 //     }
 //   });
 // });
+
+
+// $(() => {
+//   $.ajax(
+//     {
+//       method: 'GET',
+//       url:'/api/preset'
+//     })
+// }).done((presets) => {
+//   console.log(presets)
+// });
+
 $(document).ready(function() {
-
+//Setting up variables
+//Counts the total items user has selected
 var totalCounter = 0;
+//Sums up the total price for all juices
 var totalPrice = 0;
+//Adds the items into an object with the counter Id as a key and the number added as a value
 var cart = {};
+//Adds all the ingredient prices together
+var totalIngredientPrice = 0;
+//Adds all the slected ingredients into an array based on their id
+var checkedItems = [];
+//Naming an error message for user input fields
+var errorMsg = $('#field-error');
 
-const errorMsg = $('#field-error');
-
+//Displays an error message if a user does not enter a Name or Number or if a Number isn't 10 digits
 var $credentials = $('#userForm');
 $credentials.submit(function(event){
   event.preventDefault();
@@ -34,36 +54,10 @@ $credentials.submit(function(event){
   }
   else{
     errorMsg.slideUp("medium");
-    $(this).unbind('submit').submit()
+    $(this).unbind('submit').submit();
   }
 });
 
-console.log($credentials[0][1].value);
-
-
-
-// $tweetForm.submit(function(event) {
-//   event.preventDefault();
-//   var $tweet = $($tweetForm.children("#compose-tweet-area")[0]).val();
-//   if ($tweet === null || $tweet === "" ){
-//     errorMsg.slideDown();
-//     errorMsg.css('#tweet-error');
-//     errorMsg.html('<i class="fas fa-exclamation"></i> Unable to post empty tweet');
-//   }
-//   else if ($tweet.length > 140){
-//     errorMsg.slideDown();
-//     errorMsg.css('#tweet-error');
-//     errorMsg.html('<i class="fas fa-exclamation"></i> Tweet cannot be longer than 140 characters');
-//   }
-//   else{
-//     errorMsg.slideUp("medium");
-//     $.post('/tweets', $tweetForm.serialize())
-//   .then(populateTweets);
-//   $('#compose-tweet-area').val("");
-//   let counter = $("#compose-tweet-area").siblings(".counter");
-//   counter[0].innerText = 140;
-//   }
-// });
   
 function updateTotal(total){
   if (total < 0){
@@ -175,7 +169,40 @@ $(".increase").on("click", function (event)
 $("#increase-myo").on("click", function (event)
 {
   var $customMenu = $(event.target.parentElement.parentElement.parentElement.parentElement.parentElement.children[2]);
-  $customMenu.addClass("customize-menu-show");
+  $customMenu.slideDown().addClass("customize-menu-show");
+});
+
+function arrayRemove(arr, value) {
+
+  return arr.filter(function(ele){
+      return ele != value;
+  });
+
+}
+
+$('.checkbox').on("click", function(event) {
+  var price = event.target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML;
+  var priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
+  if (event.target.checked === true){
+      totalIngredientPrice = totalIngredientPrice + priceNumber;
+      totalPrice = totalPrice + totalIngredientPrice;
+      checkedItems.push(event.target.id);
+      updateTotalPrice(totalPrice);
+  } else{
+      totalIngredientPrice = totalIngredientPrice - priceNumber;
+      totalPrice = totalPrice - priceNumber;
+      checkedItems = arrayRemove(checkedItems, event.target.id);
+      updateTotalPrice(totalPrice);
+  }
+
+  $("#myo-button").on("click", function(event) {
+    $(event.target.parentNode.parentNode).slideUp();
+    
+    console.log(event.target.parentNode.parentNode.className);
+  });
+  
+  console.log(totalIngredientPrice);
+  console.log(checkedItems);
 });
 
 });
