@@ -10,6 +10,21 @@
 //   });
 // });
 
+
+$(() => {
+  $.ajax(
+    {
+      method: 'GET',
+      url:'/api/preset'
+    })
+}).done((presets) => {
+
+  console.log(presets)
+
+
+
+})
+
 let totalCounter = 0;
 let totalPrice = 0;
 let cart = {};
