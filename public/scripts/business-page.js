@@ -40,8 +40,13 @@ $(document).ready(function(){
 
   //Function to render all orders including recently submitted orders
     function renderOrders(orders) {
+<<<<<<< HEAD
       orders.forEach(function(el){
         let newOrder = createOrderElement(el);
+=======
+      orders.forEach(function(order){
+        let newOrder = createOrderElement(order);
+>>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
         $("#order").append(newOrder)
       });
     }
@@ -51,6 +56,7 @@ $(document).ready(function(){
     function createOrderElement(order) {
       let $order = $('<section class="order">').append(`
             <header>
+<<<<<<< HEAD
             <h3>${order.orderid}</h3>
             </header>
             <div>
@@ -63,6 +69,20 @@ $(document).ready(function(){
               <%} else{%>
               <h5>${order.presetname}</h5>
               <h6>Ingredients: ${order.iname} </h6>
+=======
+            <h3>${order.orderNum}</h3>
+            </header>
+            <div>
+              <h4>Name: ${escape(order.customerName)}</h4>
+              <h4>Phone Number: ${escape(order.phoneNum)}</h4>
+              <h4>Line items:</h4>
+              <% if (!${order.presetDrinkName}){%>
+              <h5>Custom Drink</h5>
+              <h6>Ingredients: ${order.ingredientname} </h6>
+              <%} else{%>
+              <h5>${order.presetDrinkName}</h5>
+              <h6>Ingredients: ${order.ingredientname} </h6>
+>>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
               <%};%>
             </div>
             <footer class="line-item">
@@ -87,13 +107,21 @@ $(document).ready(function(){
           if($time === 0 || $time === null){
             document.getElementById("#err-noTime").hidden = false;
           } else {
+<<<<<<< HEAD
           $("#err-noTime").slideUp("slow");
           $.post( "/business", $("#newOrder").serialize());
+=======
+          $.post("/business/time-entered", $("#newOrder").serialize());
+>>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
           location.reload();
         }
     });
 
+<<<<<<< HEAD
 renderOrders(orders);
+=======
+renderOrders();
+>>>>>>> 64ca746defca7bc04a45057095a3ad2a5c24d1ab
 
   //Function to load all orders
     function loadOrders(){
