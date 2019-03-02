@@ -18,6 +18,7 @@
 
 //   console.log(presets)
 // });
+<<<<<<< HEAD
 
 $(document).ready(function() {
   //Setting up variables
