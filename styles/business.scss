@@ -1,0 +1,189 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+
+footer.line-item{
+  height: auto;
+  position: relative;
+  background-color: #450998;
+  padding: 1rem;
+  font-family: 'Capriola', sans-serif;
+  color: #e8fdff;
+}
+
+
+#order{
+  background-color: #e8fdff;
+  margin: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 900;
+}
+
+
+
+#nav-bar {
+  height: 7rem;
+  width: 100%;
+  background-color: #450998;
+  color: #e8fdff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+body{
+  background-image: url("../images/bg.jpg");
+  background-color: #cccccc;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+
+.logo{
+  width: 6rem;
+    height: 5rem;
+    margin: 1rem;
+    float: left;
+}
+
+.header{
+  font-family: 'Capriola', sans-serif;
+  font-size: 3rem;
+  line-height: 7rem;
+}
+
+.info{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  line-height: 7rem;
+  margin-right: 1rem;
+  float: right;
+}
+
+
+main{
+  padding: 2rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  width: 100%;
+}
+
+.home-row{
+padding: 1rem;
+}
+
+.home-col{
+padding: 2rem;
+}
+
+.amount-clicked{
+  display: inline;
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 3rem;
+}
+
+.smaller{
+  font-size: 2rem;
+}
+
+.hide{
+  display: none;
+}
+
+.juice-pics{
+  border-radius: 25%;
+  height: 60%;
+  width: 100%;
+}
+
+.price{
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.price-myo{
+  font-family: 'Capriola', sans-serif;
+  color: white;
+  font-size: 2rem;
+  padding-top: 1rem;
+}
+
+.increase{
+margin: 1rem;
+font-family: 'M PLUS Rounded 1c', sans-serif;
+font-weight: 900;
+color: white;
+background-color: Transparent;
+background-repeat:no-repeat;
+border: none;
+cursor:pointer;
+overflow: hidden;
+outline:none;
+font-size: 4rem;
+}
+
+.decrease{
+  margin: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 900;
+  color: white;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  font-size: 4rem;
+}
+
+footer{
+  height: 6rem;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #450998;
+  padding: 1rem;
+  z-index: 1;
+}
+
+#footer-total{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  float: left;
+  color: #e8fdff;
+  margin-left: 2rem;
+  margin-top: 0.8rem;
+}
+
+#total-drinks{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  float: left;
+  color: #e8fdff;
+  margin-left: 4rem;
+  margin-top: 0.8rem;
+}
+
+#checkout-button{
+  float: right;
+  background-color: #e8fdff;
+  border-radius: 5px;
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  font-family: 'Capriola', sans-serif;
+  border: 1px solid black;
+  height: 4rem;
+  width: 13rem;
+  margin-right: 2rem;
+}
+
+
+

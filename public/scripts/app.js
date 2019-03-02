@@ -9,11 +9,61 @@
 //     }
 //   });
 // });
-
-let totalCounter = 0;
-let totalPrice = 0;
-let cart = {};
 $(document).ready(function() {
+
+var totalCounter = 0;
+var totalPrice = 0;
+var cart = {};
+
+const errorMsg = $('#field-error');
+
+var $credentials = $('#userForm');
+$credentials.submit(function(event){
+  event.preventDefault();
+  var $name = $credentials[0][0].value;
+  var $number = $credentials[0][1].value;
+  if ($name === null || $name === "" || $name === " "){
+    errorMsg.slideDown();
+    errorMsg.css('#filed-error');
+    errorMsg.html('<i class="fas fa-exclamation"></i> Please enter your name');
+  }
+  else if ($number === null || $number === "" || $number === " " || $number.length !== 10){
+    errorMsg.slideDown();
+    errorMsg.css('#field-error');
+    errorMsg.html('<i class="fas fa-exclamation"></i> Please enter your number');
+  }
+  else{
+    errorMsg.slideUp("medium");
+    $(this).unbind('submit').submit()
+  }
+});
+
+console.log($credentials[0][1].value);
+
+
+
+// $tweetForm.submit(function(event) {
+//   event.preventDefault();
+//   var $tweet = $($tweetForm.children("#compose-tweet-area")[0]).val();
+//   if ($tweet === null || $tweet === "" ){
+//     errorMsg.slideDown();
+//     errorMsg.css('#tweet-error');
+//     errorMsg.html('<i class="fas fa-exclamation"></i> Unable to post empty tweet');
+//   }
+//   else if ($tweet.length > 140){
+//     errorMsg.slideDown();
+//     errorMsg.css('#tweet-error');
+//     errorMsg.html('<i class="fas fa-exclamation"></i> Tweet cannot be longer than 140 characters');
+//   }
+//   else{
+//     errorMsg.slideUp("medium");
+//     $.post('/tweets', $tweetForm.serialize())
+//   .then(populateTweets);
+//   $('#compose-tweet-area').val("");
+//   let counter = $("#compose-tweet-area").siblings(".counter");
+//   counter[0].innerText = 140;
+//   }
+// });
   
 function updateTotal(total){
   if (total < 0){
@@ -24,6 +74,8 @@ function updateTotal(total){
   $("#total-drinks").text(`${total} Juice(s)`);
   }
 }
+
+console.log($("#total-drinks"));
 
 function totalPriceSum( obj ) {
   var sum = 0;

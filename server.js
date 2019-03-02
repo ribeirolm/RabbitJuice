@@ -49,7 +49,7 @@ app.use("/api", usersRoutes(knex));
 // Render home page
 app.get("/", (req, res) => {
 
-  //Need to start a session to track the customer's order
+  //Need to start a cookie session to track the customer's order
   res.render("index.ejs");
 })
 
@@ -86,22 +86,34 @@ app.post("/checkout/confirm", (req, res) => {
   res.redirect("/")
 })
 
-// Getting business page renders business page html
+// Getting business page renders business page html with only outstanding orders being displayed
 app.get("/business", (req, res) => {
   res.render("business.ejs")
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
 app.post("/time-entered", (req, res) => {
+  let minutes = req.body.minutes;
   client.messages
     .create({
-       body: 'Your order has been processed and will be ready in' +  + 'minutes',
+       body: 'Your order has been processed and will be ready in' + minutes + 'minutes',
+       // <number> in body needs to be updated with the number in minutes from the database
        from: '+16477244390',
        to: process.env.MY_PHONE_NUMBER,
        // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
+})
+
+//Selecting the "pickup" button on the business page should update the database with the time finished for the order and reload the business page
+app.post("/business/:order_id/pickup", (req, res) => {
+  //Need to get order_id from the request
+  //Update the database to change orders.status to "picked up" for orders_id
+  knex('orders')
+    .where('id', order_id)
+    .update({status: 'picked up'})
+  res.redirect("/business");
 })
 
 app.listen(PORT, () => {

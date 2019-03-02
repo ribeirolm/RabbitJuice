@@ -9477,6 +9477,22 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
+footer.line-item {
+  height: auto;
+  position: relative;
+  background-color: #450998;
+  padding: 1rem;
+  font-family: 'Capriola', sans-serif;
+  color: #e8fdff;
+}
+
+#order {
+  background-color: #e8fdff;
+  margin: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 900;
+}
+
 #nav-bar {
   height: 7rem;
   width: 100%;
