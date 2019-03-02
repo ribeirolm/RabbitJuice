@@ -40,8 +40,8 @@ $(document).ready(function(){
 
   //Function to render all orders including recently submitted orders
     function renderOrders(orders) {
-      orders.forEach(function(el){
-        let newOrder = createOrderElement(el);
+      orders.forEach(function(order){
+        let newOrder = createOrderElement(order);
         $("#order").append(newOrder)
       });
     }
@@ -51,18 +51,18 @@ $(document).ready(function(){
     function createOrderElement(order) {
       let $order = $('<section class="order">').append(`
             <header>
-            <h3>${order.orderid}</h3>
+            <h3>${order.orderNum}</h3>
             </header>
             <div>
-              <h4>Name: ${escape(order.customername)}</h4>
-              <h4>Phone Number: ${escape(order.phone_number)}</h4>
+              <h4>Name: ${escape(order.customerName)}</h4>
+              <h4>Phone Number: ${escape(order.phoneNum)}</h4>
               <h4>Line items:</h4>
-              <% if (!${order.presetname}){%>
+              <% if (!${order.presetDrinkName}){%>
               <h5>Custom Drink</h5>
-              <h6>Ingredients: ${order.iname} </h6>
+              <h6>Ingredients: ${order.ingredientname} </h6>
               <%} else{%>
-              <h5>${order.presetname}</h5>
-              <h6>Ingredients: ${order.iname} </h6>
+              <h5>${order.presetDrinkName}</h5>
+              <h6>Ingredients: ${order.ingredientname} </h6>
               <%};%>
             </div>
             <footer class="line-item">
