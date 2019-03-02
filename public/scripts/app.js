@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
   //Setting up variables
   //Counts the total items user has selected
@@ -45,6 +44,11 @@ $(document).ready(function() {
     }
   }
 
+  function updatePresetsSelected(value){
+    $("#preset-selected").val(JSON.stringify(value));
+  }
+  console.log($("#preset-selected").val());
+
   //Sums up the number of Juices added in the cart object
   function totalPriceSum( obj ) {
     var sum = 0;
@@ -65,7 +69,7 @@ $(document).ready(function() {
     else{
       $("#price-total").text(`$${total} Total`);
     }
-
+  }
 //function to retreive all preset drink data from /api/presets
 //refactor later
 
@@ -290,6 +294,7 @@ $credentials.submit(function(event){
     checkedItems = [];
     totalPrice = totalPrice - totalIngredientPrice;
     $('.checkbox').checked = false;
-  });
-
-});
+  })
+})
+})
+})

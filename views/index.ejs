@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
       <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Rabbit Juice - Homepage</title>
 
     <!-- Linking Logo Font -->
@@ -43,7 +43,8 @@
             <h3 id="number-tag">PhoneNumber:</h3>
             <textarea class = "textarea" name="text" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
           </div>
-          <input type="hidden" id="berryjuice" name="" value="3487">
+          <input type="hidden" id="preset-selected" name="preset-selected" value="1">
+          <input type="hidden" id="ingredients-selected" name="ingredients-selected" value="2">
           <div><button method="POST" type="submit" value="Order Now" id="checkout-button">Order Now</button>
             <div id="field-error"></div>
           </div>
@@ -121,9 +122,7 @@
             <h4 class="amount-clicked hide" id="red-count">0</h4>
             <button type="submit" class="decrease" id="decrease-red">-</button>
           </div>
-        </div>
 
-        <div class="row home-row">
           <!-- Tropical Juice -->
           <div class="col home-col" align="center" id="tropical-col">
             <img class="juice-pics" src="images/tropical.jpg">
