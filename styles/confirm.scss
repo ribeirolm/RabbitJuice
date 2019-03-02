@@ -1,0 +1,65 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+div.container{
+  background-color: #e8fdff;
+  margin: 1rem;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-weight: 900;
+}
+
+
+#nav-bar {
+  height: 7rem;
+  width: 100%;
+  background-color: #450998;
+  color: #e8fdff;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0px;
+}
+
+body{
+  background-image: url("../images/bg.jpg");
+  background-color: #cccccc;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+}
+
+
+.logo{
+  width: 6rem;
+    height: 5rem;
+    margin: 1rem;
+    float: left;
+}
+
+.header{
+  font-family: 'Capriola', sans-serif;
+  font-size: 3rem;
+  line-height: 7rem;
+}
+
+.info{
+  font-family: 'Capriola', sans-serif;
+  font-size: 2rem;
+  line-height: 7rem;
+  margin-right: 1rem;
+  float: right;
+}
+
+
+main{
+  padding: 2rem;
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  width: 100%;
+}
+
+
+
+
