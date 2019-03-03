@@ -1,3 +1,66 @@
+//function to retreive all preset drink data from /api/presets
+//refactor later
+
+function loadPresets(){
+  $.ajax({
+    method: 'GET',
+    url:'/api/preset'
+  }).done((presets) => {
+    console.log(presets)
+ 
+
+    presets.forEach(juice => {
+      switch (juice.id) {
+        case 1:
+        $('.price').eq(0).text(`$${juice.price}`)
+        $('.juice-pics').eq(0).text(`$${juice.img}`)
+        break;
+
+        case 2:
+        $('.price').eq(1).text(`$${juice.price}`)
+        $('.juice-pics').eq(1).text(`$${juice.img}`)
+        break;
+        
+        case 3:
+        $('.price').eq(2).text(`$${juice.price}`)
+        $('.juice-pics').eq(2).text(`$${juice.img}`)
+        break;
+        
+        case 4:
+        $('.price').eq(3).text(`$${juice.price}`)
+        $('.juice-pics').eq(3).text(`$${juice.img}`)
+        break;
+        
+        case 5:
+        $('.price').eq(4).text(`$${juice.price}`)
+        $('.juice-pics').eq(4).text(`$${juice.img}`)
+        break;
+        
+        case 6:
+        $('.price').eq(5).text(`$${juice.price}`)
+        $('.juice-pics').eq(5).text(`$${juice.img}`)
+        break;
+        
+        case 7:
+        $('.price').eq(6).text(`$${juice.price}`)
+        $('.juice-pics').eq(6).text(`$${juice.img}`)
+        break;
+      }
+    });
+  })
+}
+
+function loadCustomizeIngredients() {
+  // $.ajax({
+  //   method: 'GET',
+  //   url:'/api/preset'
+  // }).done((presets) => {
+}
+
+  //calling preset drink data
+loadPresets()
+
+
 $(document).ready(function() {
   //Setting up variables
   //Counts the total items user has selected
@@ -69,99 +132,6 @@ $(document).ready(function() {
     else{
       $("#price-total").text(`$${total} Total`);
     }
-  }
-//function to retreive all preset drink data from /api/presets
-//refactor later
-
-function loadPresets(){
-  $.ajax({
-    method: 'GET',
-    url:'/api/preset'
-  }).done((presets) => {
-    console.log(presets)
- 
-
-    presets.forEach(juice => {
-      switch (juice.id) {
-        case 1:
-        $('.price').eq(0).text(`$${juice.price}`)
-        $('.juice-pics').eq(0).text(`$${juice.img}`)
-        break;
-
-        case 2:
-        $('.price').eq(1).text(`$${juice.price}`)
-        $('.juice-pics').eq(1).text(`$${juice.img}`)
-        break;
-        
-        case 3:
-        $('.price').eq(2).text(`$${juice.price}`)
-        $('.juice-pics').eq(2).text(`$${juice.img}`)
-        break;
-        
-        case 4:
-        $('.price').eq(3).text(`$${juice.price}`)
-        $('.juice-pics').eq(3).text(`$${juice.img}`)
-        break;
-        
-        case 5:
-        $('.price').eq(4).text(`$${juice.price}`)
-        $('.juice-pics').eq(4).text(`$${juice.img}`)
-        break;
-        
-        case 6:
-        $('.price').eq(5).text(`$${juice.price}`)
-        $('.juice-pics').eq(5).text(`$${juice.img}`)
-        break;
-        
-        case 7:
-        $('.price').eq(6).text(`$${juice.price}`)
-        $('.juice-pics').eq(6).text(`$${juice.img}`)
-        break;
-      }
-    });
-  })
-}
-
-function loadCustomizeIngredients() {
-  // $.ajax({
-  //   method: 'GET',
-  //   url:'/api/preset'
-  // }).done((presets) => {
-}
-
-let totalCounter = 0;
-let totalPrice = 0;
-let cart = {};
-$(document).ready(function() {
-
-  //calling preset drink data
-loadPresets()
-
-var totalCounter = 0;
-var totalPrice = 0;
-var cart = {};
-
-const errorMsg = $('#field-error');
-
-var $credentials = $('#userForm');
-$credentials.submit(function(event){
-  event.preventDefault();
-  var $name = $credentials[0][0].value;
-  var $number = $credentials[0][1].value;
-  if ($name === null || $name === "" || $name === " "){
-    errorMsg.slideDown();
-    errorMsg.css('#filed-error');
-    errorMsg.html('<i class="fas fa-exclamation"></i> Please enter your name');
-  }
-  else if ($number === null || $number === "" || $number === " " || $number.length !== 10){
-    errorMsg.slideDown();
-    errorMsg.css('#field-error');
-    errorMsg.html('<i class="fas fa-exclamation"></i> Please enter your number');
-  }
-  else{
-    errorMsg.slideUp("medium");
-    $(this).unbind('submit').submit()
-
   }
 
   //When user clicks the '+' button under any juice
@@ -294,7 +264,5 @@ $credentials.submit(function(event){
     checkedItems = [];
     totalPrice = totalPrice - totalIngredientPrice;
     $('.checkbox').checked = false;
-  })
-})
-})
-})
+  });
+});
