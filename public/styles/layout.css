@@ -9649,7 +9649,6 @@ main {
   font-size: 3rem;
 }
 
-<<<<<<< HEAD
 .smaller {
   font-size: 2rem;
 }
@@ -9711,8 +9710,6 @@ main {
   visibility: visible;
 }
 
-=======
->>>>>>> tidyup
 .customize-menu {
   margin-right: 0rem;
   margin-left: 65rem;
@@ -9761,16 +9758,6 @@ main {
   font-family: 'Capriola', sans-serif;
   font-size: 1.5rem;
   border-radius: 5px;
-<<<<<<< HEAD
-=======
-}
-
-.ingredient-headers {
-  font-family: 'Capriola', sans-serif;
-  color: #e8fdff;
-  font-size: 1.5rem;
-  margin: 1rem;
->>>>>>> tidyup
 }
 
 label {
@@ -9788,62 +9775,3 @@ input[type=checkbox]:hover {
   font-family: 'Capriola', sans-serif;
   margin-left: 0.5rem;
 }
-<<<<<<< HEAD
-=======
-
-#field-error {
-  display: none;
-  background-color: #C75050;
-  margin-left: 1rem;
-  text-align: center;
-  color: white;
-  font-style: 'Capriola', sans-serif;
-  height: 2rem;
-  line-height: 2rem;
-  width: 13rem;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-footer {
-  height: 6rem;
-  width: 100%;
-  position: fixed;
-  bottom: 0;
-  background-color: #450998;
-  padding: 1rem;
-  z-index: 1;
-}
-
-#footer-total-checkout {
-  font-family: 'Capriola', sans-serif;
-  font-size: 2rem;
-  float: left;
-  color: #e8fdff;
-  margin-left: 2rem;
-  margin-top: 0.8rem;
-}
-
-#total-drinks-checkout {
-  font-family: 'Capriola', sans-serif;
-  font-size: 2rem;
-  float: left;
-  color: #e8fdff;
-  margin-left: 4rem;
-  margin-top: 0.8rem;
-}
-
-#checkout-button {
-  background-color: #e8fdff;
-  border-radius: 5px;
-  color: black;
-  font-size: 2rem;
-  text-align: center;
-  font-family: 'Capriola', sans-serif;
-  border: 1px solid black;
-  height: 4rem;
-  width: 13rem;
-  margin-top: 2.5rem;
-  margin-left: 1rem;
-}
->>>>>>> tidyup

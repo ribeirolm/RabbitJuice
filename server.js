@@ -105,7 +105,7 @@ app.post("/checkout/confirm", async (req, res) => {
   //     }
   //   }
   // })
-  await apiReload.loadPresets()
+
 
   client.messages
   .create({
@@ -131,7 +131,6 @@ app.post("/business/time-entered", async (req, res) => {
     id: 2
   }).into('orders')
 
-  await apiReload.loadPresets()
 
 
   let minutes = req.body.minutes;
