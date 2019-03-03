@@ -71,7 +71,7 @@ app.post("/next", (req, res) => {
 
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
 app.post("/checkout/confirm", async (req, res) => {
-  
+
   console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}`)
 
   let name = req.body.name;
@@ -138,14 +138,17 @@ app.post("/business/time-entered", async (req, res) => {
   client.messages
     .create({
        body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
-
-       from: phoneNumber, //'+16477244390',
-       to: process.env.MY_PHONE_NUMBER,
-
-       // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
+       from: '+16477244390',
+       //We would ideally identify the "to" as req.body.phoneNumber to send the message to the customer who ordered the drink
+       //However, because of twilio free trial limitations, we needed to hardcode the number as a verified caller ID within our twilio account
+       to: process.env.CUSTOMER_NUMBER,
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
+})
+
+app.post("/business/status", (req, res) => {
+  res.redirect("/business")
 })
 
 app.listen(PORT, () => {

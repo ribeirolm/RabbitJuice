@@ -20,15 +20,14 @@ $(document).ready(function(){
       function renderOrders(orders) {
         orders.forEach(function(order){
           let newOrder = createOrderElement(order);
-          $("#order").append(newOrder)
+          $(".container").append(newOrder)
         });
       }
 
     //Function to create new order sections
       function createOrderElement(order) {
-        let $order = $('<section id="order">').append(`
+        let $order = (`
               <header>
-
               <h3>ORDER: ${order.orderNum}</h3>
               </header>
               <div>
@@ -37,22 +36,20 @@ $(document).ready(function(){
                 <h4>Line items:</h4>
                 <h5> ${drinkName(order.presetDrinkName)}</h5>
                 <h6>Ingredients: ${order.ingredientname} </h6>
-
-               </div>
-            <footer class="line-item">
-              <form id="newOrder" method="POST" action="/business/time-entered">
-                <h4>Minutes to completion:</h4>
-                <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
-                <textarea name="minutes" class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
-                <input type="hidden" name="phoneNumber" value= ${escape(order.phoneNum)}>
-                <input name="minuteSubmit" class="minuteSubmit" type="submit" value="Send to Customer">
-              </form>
-              <input class="pickedup" method="POST" action="/business/:order_id/pickup" type="submit" value="Picked Up">
-            </footer>
-            </section> `)
-
-        console.log($order)
-
+              </div>
+              <footer class="line-item">
+                <form id="newOrder" method="POST" action="/business/time-entered">
+                  <h4>Minutes to completion:</h4>
+                  <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
+                  <textarea name="minutes" class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
+                  <input type="hidden" name="phoneNumber" value= ${escape(order.phoneNum)}>
+                  <input name="minuteSubmit" class="minuteSubmit" type="submit" value="Send to Customer">
+                </form>
+                <form method="POST" action="/business/status">
+                  <button class="pickedup" type="submit" value="Picked Up">Picked Up</button>
+                </form>
+              </footer>
+              </section>`)
         return $order;
       }
 
@@ -86,11 +83,10 @@ $(document).ready(function(){
 // renderOrders(orders);
 >>>>>>> tidyup
 
-    //To change the class of an order on the selection of "pick up"
-      $("#order").on("click", function (event){
-        // var $order = $(event.target.sibli;
-        // console.log($order);
-        $(this).addClass("hide");
+    //To change the class of an order on the selection of "pick up" to hide the order when it has been picked up
+      $(".pickedup").on("click", function (event){
+        let $order = $(event.target.parentNode.parentNode);
+        $order.slideUp();
       });
 
     //Function to load all orders
@@ -98,7 +94,6 @@ $(document).ready(function(){
         $.ajax("/api/business", { method: 'GET' })
         .then(function (orders) {
           renderOrders(orders);
-          console.log(orders);
         });
       }
 
