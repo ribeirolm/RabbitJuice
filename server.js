@@ -72,14 +72,15 @@ app.post("/next", (req, res) => {
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
 app.post("/checkout/confirm", async (req, res) => {
   
-  console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}`)
+  console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}, preset: ${req.body.preset_selected}, ingredient: ${req.body.ingredient_selected}` )
 
   let name = req.body.name;
-  let phoneNumber = req.body.phone_number
+  let phoneNumber = parseInt(req.body.phone_number)
+  let presetDrinks = req.body.preset_selected;
+  let ingredients = req.body.ingredient_selected;
 
   //inserting order information to the database
   await knex.insert({
-  id: 4,
    name: name,
    phone_number: phoneNumber,
    status: "outstanding"

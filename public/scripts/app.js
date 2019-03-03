@@ -1,6 +1,5 @@
-//function to retreive all preset drink data from /api/presets
+//Jay: function to retreive all preset drink data from /api/presets
 //refactor later
-
 function loadPresets(){
   $.ajax({
     method: 'GET',
@@ -50,6 +49,30 @@ function loadPresets(){
   })
 }
 
+//Jay: function to retreive all preset drink data from /api/presets
+//refactor later
+// function loadIngredients(){
+//   $.ajax({
+//     method: 'GET',
+//     url:'/api/ingredients'
+//   }).done((presets) => {
+//     console.log(presets)
+ 
+
+    // presets.forEach(ingredient => {
+    //   console.log(`ingredient id = ${ingredient.id}`);
+    //   switch (ingredient.id) {
+    //     case 1:
+    //     $('#1').text(`$${checkbox.price}`)
+    //     $('#1').text(`$${juice.img}`)
+    //     break;
+      
+    //   }
+    // });
+//   })
+// }
+
+
 function loadCustomizeIngredients() {
   // $.ajax({
   //   method: 'GET',
@@ -57,9 +80,9 @@ function loadCustomizeIngredients() {
   // }).done((presets) => {
 }
 
-  //calling preset drink data
+  //calling preset drink and ingredients data
 loadPresets()
-
+// loadIngredients()
 
 $(document).ready(function() {
   //Setting up variables
