@@ -147,9 +147,9 @@ app.post("/business/time-entered", async (req, res) => {
     res.redirect("/business")
 })
 
-app.post("/business/status", (req, res) => {
-  res.redirect("/business")
-})
+// app.post("/business/status", (req, res) => {
+//   res.redirect("/business")
+// })
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
