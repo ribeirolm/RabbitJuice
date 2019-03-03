@@ -17,15 +17,16 @@ $(document).ready(function(){
       }
 
     //Function to render all orders including recently submitted orders
-      function renderOrders(orders) {
+    function renderOrders(orders) {
         orders.forEach(function(order){
           let newOrder = createOrderElement(order);
           $(".container").append(newOrder)
         });
+        
       }
 
     //Function to create new order sections
-      function createOrderElement(order) {
+       function createOrderElement(order) {
         let $order =  $('<section id="order">').append(`
               <header>
               <h3>ORDER: ${order.orderNum}</h3>
@@ -65,10 +66,7 @@ $(document).ready(function(){
       // });
 
     //To change the class of an order on the selection of "pick up" to hide the order when it has been picked up
-      $(".pickedup").on("click", function (event){
-        let $order = $(event.target.parentNode.parentNode);
-        $order.slideUp();
-      });
+     
 
     //Function to load all orders
       function loadOrders(){
@@ -77,6 +75,13 @@ $(document).ready(function(){
           renderOrders(orders);
         });
       }
+
+      $(".pickedup").on("click", function (event){
+        let $order = $(event.target.parentNode.parentNode);
+        console.log("working")
+        $order.slideUp();
+        console.log('working');
+      });
 
       // //Ensuring all orders are loaded
         loadOrders();
