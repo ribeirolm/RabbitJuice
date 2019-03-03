@@ -280,6 +280,14 @@ $(document).ready(function() {
     totalPrice = totalPrice - totalIngredientPrice;
     $('.checkbox').checked = false;
   });
+
+  var submitData = {Name: $("name-field").val(), Phone: $("number-field").val(), Presets: $("#preset-selected").val(), Ingredients: $("#ingredients-selected").val()};
+
+  $("userForm").submit(function(event){
+    event.preventDefault();
+    $.post('/checkout/confirm', submitData);
+  });
+  
   console.log($("#preset-selected").val());
   console.log($("#ingredients-selected").val());
 });
