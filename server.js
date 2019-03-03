@@ -72,10 +72,15 @@ app.post("/next", (req, res) => {
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
 app.post("/checkout/confirm", async (req, res) => {
 
-  console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}`)
+  console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}, preset: ${req.body.preset_selected}, customize: ${req.body.ingredients_selected}`)
 
   let name = req.body.name;
   let phoneNumber = req.body.phone_number
+
+  for (preset of presets){
+    
+
+  }
 
   //inserting order information to the database
   await knex.insert({
@@ -84,27 +89,28 @@ app.post("/checkout/confirm", async (req, res) => {
    phone_number: phoneNumber,
    status: "outstanding"
   }).into("orders")
-  //   .then(function(results){
+    .then(function(results){
 
-  //   for (drink in drinks){
+    for (drink in drinks){
 
-  //     if (drinks[drink] = 8) {
-  //       knex.insert({
-  //         preset_drink_id: null
-  //       }).into('orders_lines').then(function(results){
-  //         for (ingredient in ingredients){
-  //           knex.insert({
-  //             ingredient_id: ingredient
-  //           }).into('customized_drink_id')
-  //         }
-  //       })
-  //     } else {
-  //       knex.insert({
-  //         preset_drink_id: drinks[drink]
-  //       }).into(orders_lines)
-  //     }
-  //   }
-  // })
+      if (drinks[drink] = 8) {
+        knex.insert({
+          preset_drink_id: null
+        }).into('orders_lines').then(function(results){
+          for (ingredient in ingredients){
+            knex.insert({
+              ingredient_id: ingredient
+            }).into('customized_drink_id')
+          }
+        })
+      } else {
+        knex.insert({
+          preset_drink_id: drinks[drink]
+        }).into(orders_lines)
+      }
+    }
+  })
+
   await apiReload.loadPresets()
 
   client.messages
@@ -123,15 +129,15 @@ app.get("/business", (req, res) => {
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
-app.post("/business/time-entered", async (req, res) => {
+app.post("/business/status", async (req, res) => {
 
-  await knex.update({
-    status: "picked up"
-  }).where({
-    id: 2
-  }).into('orders')
+  // await knex.update({
+  //   status: "picked up"
+  // }).where({
+  //   id: req.body.orderId
+  // }).into('orders')
 
-  await apiReload.loadPresets()
+  // await apiReload.loadPresets()
 
 
   let minutes = req.body.minutes;
