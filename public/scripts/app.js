@@ -6,7 +6,7 @@ function loadPresets(){
     method: 'GET',
     url:'/api/preset'
   }).done((presets) => {
-    console.log(presets)
+    // console.log(presets)
  
 
     presets.forEach(juice => {
@@ -70,7 +70,7 @@ $(document).ready(function() {
   //Adds the items into an object with the counter Id as a key and the number added as a value
   var cart = {};
   //Adds all the slected ingredients into an array based on their id
-  var checkedItems = [];
+  var checkedItems = {};
   //Naming an error message for user input fields
   var errorMsg = $('#field-error');
 
@@ -109,8 +109,14 @@ $(document).ready(function() {
 
   function updatePresetsSelected(value){
     $("#preset-selected").val(JSON.stringify(value));
+    console.log($("#preset-selected").val());
   }
-  console.log($("#preset-selected").val());
+
+  function updateIngredientsSelected(value){
+    $("#ingredients-selected").val(JSON.stringify(value));
+    console.log($("#ingredients-selected").val());
+  }
+  
 
   //Sums up the number of Juices added in the cart object
   function totalPriceSum( obj ) {
@@ -178,7 +184,7 @@ $(document).ready(function() {
     totalPrice += priceNumber;
     updateTotal(totalCounter);
     updateTotalPrice(totalPrice);
-    console.log(cart);
+    updatePresetsSelected(cart);
   });
 
   //When the user clicks the '-' under any juice
@@ -212,6 +218,7 @@ $(document).ready(function() {
     totalPrice = totalPrice - priceNumberDecrease;
     updateTotalPrice(totalPrice);
     updateTotal(totalCounter);
+    updatePresetsSelected(cart);
   });
 
   //When a user adds a 'Make Your Own' juice
@@ -235,23 +242,31 @@ $(document).ready(function() {
     //Finding ingredient price
     var price = event.target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML;
     var priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
+    var checkId = event.target.id;
 
     //If the box is now checked
     if (event.target.checked === true){
       //add the ingredient price together and to the price total and add the ingredient Id to the checkedItems array
-      checkedItems.push(event.target.id);
+      if (!Object.keys(checkedItems).includes(checkId)){
+        checkedItems[checkId] = 1;
+      }
+      else {
+        chekedItems[checkId] = 1;
+      }
       console.log(checkedItems);
       totalPrice = totalPrice + priceNumber;
       updateTotalPrice(totalPrice);
+      updateIngredientsSelected(checkedItems);
+
 
       //if a user unchecks a box
     } else{
       //removes the ingredient Id from the checkedItems array and subtracts it's price from the totalPrice
-      checkedItems = arrayRemove(checkedItems, event.target.id);
+      checkedItems[checkId] = 0;
       totalPrice = totalPrice - priceNumber;
       updateTotalPrice(totalPrice);
+      updateIngredientsSelected(checkedItems);
     }
-    console.log(checkedItems);
   });
 
   //When a user clicks on the 'OK' button in the select your ingredients menu
@@ -265,4 +280,6 @@ $(document).ready(function() {
     totalPrice = totalPrice - totalIngredientPrice;
     $('.checkbox').checked = false;
   });
+  console.log($("#preset-selected").val());
+  console.log($("#ingredients-selected").val());
 });
