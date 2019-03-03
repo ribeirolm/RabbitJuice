@@ -93,11 +93,17 @@ app.post("/business/time-entered", (req, res) => {
     .create({
        body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
        from: '+16477244390',
-       to: req.body.phoneNumber,
-       // we need to alter the "to" so it retrieves the phone number of the customer who ordered the drink
+       //We would ideally identify the "to" as req.body.phoneNumber to send the message to the customer who ordered the drink
+       //However, because of twilio free trial limitations, we needed to hardcode the number as a verified caller ID within our twilio account
+       to: process.env.CUSTOMER_NUMBER,
+
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
+})
+
+app.post("/business/status", (req, res) => {
+  res.redirect("/business")
 })
 
 app.listen(PORT, () => {

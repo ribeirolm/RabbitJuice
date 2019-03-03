@@ -9491,10 +9491,7 @@ footer.line-item {
   margin: 1rem;
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 900;
-}
-
-.hide {
-  display: none;
+  padding: 1rem;
 }
 
 #nav-bar {
