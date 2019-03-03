@@ -156,7 +156,7 @@ app.post("/business/status", (req, res) => {
     status: "picked up"
   }).where({
     id: req.body.orderId
-  }).into('orders')
+  }).into('orders').then()
 
 
   let minutes = req.body.minutes;
