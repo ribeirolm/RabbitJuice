@@ -38,12 +38,12 @@
           <div class="row">
             <form method="POST" action="/checkout/confirm" id="userForm">
             <h3 id="name-tag">Name:</h3>
-            <textarea class = "textarea" name="text" id="name-field" placeholder="Please Enter Your Name"></textarea>
+            <textarea class = "textarea" name="name" id="name-field" placeholder="Please Enter Your Name"></textarea>
             <h3 id="number-tag">PhoneNumber:</h3>
-            <textarea class = "textarea" name="text" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
+            <textarea class = "textarea" name="phone_number" id="number-field" placeholder="Please Enter Your Phone Number"></textarea>
           </div>
-          <input type="hidden" id="preset-selected" name="preset-selected" value="">
-          <input type="hidden" id="ingredients-selected" name="ingredients-selected" value="">
+          <input type="hidden" id="preset-selected" name="preset_selected" value="">
+          <input type="hidden" id="ingredients-selected" name="ingredients_selected" value="">
           <div><button method="POST" type="submit" value="Order Now" id="checkout-button">Order Now</button>
             <div id="field-error"></div>
           </div>
