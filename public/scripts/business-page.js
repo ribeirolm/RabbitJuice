@@ -24,6 +24,20 @@ $(document).ready(function(){
         });
       }
 
+    //   $("#newOrder").submit(function(event) {
+    // event.preventDefault();
+    // let $minutes = $(".textarea").val().length;
+    //     if($minutes === "" || $minutes === null || $minutes === " "){
+    //       document.getElementById("#err-noTime").hidden = false;
+    //     } else {
+    //     $("#err-noTime").slideUp("slow");
+    //     $(this).unbind('submit').submit();
+    //     $.post("/business/time-entered", $("#newOrder").serialize());
+    //     location.reload();
+    //           // $.post( "/tweets/", $("#newTweet").serialize());
+    //     // location.reload();
+    //   }
+    // });
     //Function to create new order sections
       function createOrderElement(order) {
         let $order =  $('<section id="order">').append(`
@@ -40,16 +54,17 @@ $(document).ready(function(){
               <footer class="line-item">
                 <form id="newOrder" method="POST" action="/business/time-entered">
                   <h4>Minutes to completion:</h4>
-                  <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
                   <textarea name="minutes" class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
                   <input type="hidden" name="phoneNumber" value= ${escape(order.phoneNum)}>
                   <input name="minuteSubmit" class="minuteSubmit" type="submit" value="Send to Customer">
                 </form>
+                  <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
                   <button class="pickedup" type="submit" value="Picked Up">Picked Up</button>
               </footer>
               </section>`)
         return $order;
       }
+
 
   // var errorMsg = $('#field-error');
 
@@ -67,18 +82,7 @@ $(document).ready(function(){
   //   }
   // });
 
-  $(".textarea").submit(function(event) {
-    event.preventDefault();
-    let $minutes = $(".textarea").val().length;
-        if($minutes === "" || $minutes === null || $minutes === " "){
-          document.getElementById("#err-noTime").hidden = false;
-        } else {
-        $("#err-noTime").slideUp("slow");
-        $(this).unbind('submit').submit();
-        // $.post( "/tweets/", $("#newTweet").serialize());
-        // location.reload();
-      }
-  });
+
 
 
     //When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.

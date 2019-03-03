@@ -124,15 +124,14 @@ app.get("/business", (req, res) => {
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
 app.post("/business/time-entered", async (req, res) => {
-
-  await knex.update({
+  try{
+    await knex.update({
     status: "picked up"
   }).where({
     id: 2
   }).into('orders')
 
   await apiReload.loadPresets()
-
 
   let minutes = req.body.minutes;
   client.messages
@@ -145,6 +144,11 @@ app.post("/business/time-entered", async (req, res) => {
      })
     .then(message => console.log(message.sid));
     res.redirect("/business")
+
+  }
+    catch(error) {
+    res.status(400)
+  }
 })
 
 // app.post("/business/status", (req, res) => {

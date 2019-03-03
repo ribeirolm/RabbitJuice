@@ -9477,7 +9477,7 @@ a.text-dark:hover, a.text-dark:focus {
   }
 }
 
-#field-error {
+#err-noTime {
   display: none;
   background-color: #C75050;
   margin-left: 1rem;
