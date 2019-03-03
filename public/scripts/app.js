@@ -147,7 +147,7 @@ $(document).ready(function() {
     var priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
 
     //Getting the juice counters item ID to be used as a key for the cart object
-    var itemId = event.target.nextSibling.nextSibling.id;
+    var itemId = event.target.nextSibling.nextSibling.id.substring(0,1);
 
     //Finding the juice counters ID
     var counter = event.target.nextSibling.nextSibling.innerHTML;
@@ -243,6 +243,7 @@ $(document).ready(function() {
     var price = event.target.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.nextSibling.innerHTML;
     var priceNumber = Number(price.replace(/[^0-9.-]+/g,""));
     var checkId = event.target.id;
+    
 
     //If the box is now checked
     if (event.target.checked === true){
@@ -282,6 +283,7 @@ $(document).ready(function() {
   });
 
   var submitData = {Name: $("name-field").val(), Phone: $("number-field").val(), Presets: $("#preset-selected").val(), Ingredients: $("#ingredients-selected").val()};
+  
 
   $("userForm").submit(function(event){
     event.preventDefault();
