@@ -51,6 +51,36 @@ $(document).ready(function(){
         return $order;
       }
 
+  // var errorMsg = $('#field-error');
+
+  // //Displays an error message if a user does not enter minutes in the minutes field a Name or Number or if a Number isn't 10 digits
+  // var $minutes = $('.textarea');
+  // $minutes.submit(function(event){
+  //   event.preventDefault();
+  //   if ($minutes.value === null || $minutes === "" || $minutes === " "){
+  //     errorMsg.slideDown();
+  //     errorMsg.css('#filed-error');
+  //     errorMsg.html('<i class="fas fa-exclamation"></i> Please enter a number');
+  //   } else{
+  //     errorMsg.slideUp("medium");
+  //     $(this).unbind('submit').submit();
+  //   }
+  // });
+
+  $(".textarea").submit(function(event) {
+    event.preventDefault();
+    let $minutes = $(".textarea").val().length;
+        if($minutes === "" || $minutes === null || $minutes === " "){
+          document.getElementById("#err-noTime").hidden = false;
+        } else {
+        $("#err-noTime").slideUp("slow");
+        $(this).unbind('submit').submit();
+        // $.post( "/tweets/", $("#newTweet").serialize());
+        // location.reload();
+      }
+  });
+
+
     //When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.
     //If there is no value in time field being submitted an error message is displayed.
       // $("#newOrder").submit(function(event) {

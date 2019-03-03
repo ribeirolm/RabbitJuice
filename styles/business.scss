@@ -1,5 +1,18 @@
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+#err-noTime{
+  display: none;
+  background-color: #C75050;
+  margin-left: 1rem;
+  text-align: center;
+  color: white;
+  font-style: 'Capriola', sans-serif;
+  height: 2rem;
+  line-height: 2rem;
+  width: 13rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
 
 footer.line-item{
   height: auto;
@@ -17,6 +30,7 @@ footer.line-item{
   font-family: 'M PLUS Rounded 1c', sans-serif;
   font-weight: 900;
   padding: 1rem;
+  border-radius: 5px;
 
 }
 
