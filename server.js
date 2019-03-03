@@ -70,48 +70,68 @@ app.post("/next", (req, res) => {
 })
 
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
-app.post("/checkout/confirm", async (req, res) => {
+app.post("/checkout/confirm", (req, res) => {
 
   console.log(`name: ${req.body.name}, phone_number: ${req.body.phone_number}, preset: ${req.body.preset_selected}, customize: ${req.body.ingredients_selected}`)
-
   let name = req.body.name;
   let phoneNumber = req.body.phone_number
 
-  for (preset of presets){
-    
-
-  }
-
   //inserting order information to the database
-  await knex.insert({
-  id: 4,
+  knex.insert({
    name: name,
    phone_number: phoneNumber,
    status: "outstanding"
   }).into("orders")
     .then(function(results){
-
-    for (drink in drinks){
-
-      if (drinks[drink] = 8) {
-        knex.insert({
-          preset_drink_id: null
-        }).into('orders_lines').then(function(results){
-          for (ingredient in ingredients){
+      //preste drinks
+      if (req.body.preset_selected) {
+        let preset_orders = JSON.parse(req.body.preset_selected)      
+        for (let preset in preset_orders) {
+          console.log("drink id", preset)
+          console.log("qty", preset_orders[preset])
+          
+          for (let i = 1 ; i <= preset_orders[preset]; i++ ) {
+            
             knex.insert({
+              preset_drink_id: preset,
+              order_id: knex.select('id').from('orders').where({phone_number: phoneNumber})
+            }).into("orders_lines").then()
+            console.log('inserted', preset)
+          }
+        }
+      }
+    })
+    //customized drinks
+    .then(function(results){
+      if (req.body.ingredients_selected) {
+        let ingredients = JSON.parse(req.body.ingredients_selected)
+
+        knex.insert({
+          preset_drink_id: null,
+          order_id: knex.select('id').distinct().from('orders').where({phone_number: phoneNumber})
+        }).into('orders_lines')
+        .then(function (results){
+    
+          let queryCustomized = function(ingredient){
+            knex.insert({
+              customized_drink_id: knex('orders_lines').distinct('orders_lines.id').join('orders','orders_lines.order_id', 'orders.id').where({'orders.phone_number': phoneNumber, 'orders_lines.preset_drink_id':null}),
               ingredient_id: ingredient
-            }).into('customized_drink_id')
+            }).into('customized_drinks_ingredients').then()
+
+          }
+
+          for (let ingredient in ingredients) {
+            console.log("ingredient id", ingredient)
+            console.log("ingredient", ingredients[ingredient])
+            
+            queryCustomized(ingredient)
+
           }
         })
-      } else {
-        knex.insert({
-          preset_drink_id: drinks[drink]
-        }).into(orders_lines)
       }
-    }
-  })
+    })
 
-  await apiReload.loadPresets()
+    
 
   client.messages
   .create({
@@ -121,6 +141,7 @@ app.post("/checkout/confirm", async (req, res) => {
   })
   .then(message => console.log(message.sid));
   res.redirect("/confirm")
+
 })
 
 // Getting business page renders business page html with only outstanding orders being displayed
@@ -129,15 +150,13 @@ app.get("/business", (req, res) => {
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
-app.post("/business/status", async (req, res) => {
+app.post("/business/status", (req, res) => {
 
-  // await knex.update({
-  //   status: "picked up"
-  // }).where({
-  //   id: req.body.orderId
-  // }).into('orders')
-
-  // await apiReload.loadPresets()
+   knex.update({
+    status: "picked up"
+  }).where({
+    id: req.body.orderId
+  }).into('orders')
 
 
   let minutes = req.body.minutes;
