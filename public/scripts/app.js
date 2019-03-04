@@ -281,7 +281,7 @@ $(document).ready(function() {
     var priceDecrease = event.target.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
     var priceNumberDecrease = Number(priceDecrease.replace(/[^0-9.-]+/g,""));
     //Finding juice counter Id
-    var itemIdDecrease = event.target.previousSibling.previousSibling.id;
+    var itemIdDecrease = event.target.previousSibling.previousSibling.id.substring(0,1);
 
     //Updating current Juice counter and total counter as well as the number in the cart object
     totalCounter--;

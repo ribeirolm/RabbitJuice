@@ -67,6 +67,14 @@ app.post("/checkout/confirm", (req, res) => {
   let name = req.body.name;
   let phoneNumber = req.body.phone_number
 
+  client.messages
+  .create({
+    body: 'A new order has been placed! See </business> for details',
+    from: '+16477244390',
+    to: process.env.MY_PHONE_NUMBER,
+  })
+  .then(message => console.log(message.sid));
+
   //inserting order information to the database
   knex.insert({
    name: name,
@@ -124,13 +132,7 @@ app.post("/checkout/confirm", (req, res) => {
 
 
 
-  client.messages
-  .create({
-    body: 'A new order has been placed! See </business> for details',
-    from: phoneNumber,
-    to: process.env.MY_PHONE_NUMBER,
-  })
-  .then(message => console.log(message.sid));
+  
   res.redirect("/confirm")
 
 })
