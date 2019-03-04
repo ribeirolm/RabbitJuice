@@ -55,18 +55,9 @@ app.get("/", (req, res) => {
   res.render("index.ejs");
 })
 
-// Getting checkout without ordering returns an error message
-app.get("/checkout", (req, res) => {
-    res.render("checkout.ejs");
-});
-
+// Render the confirmation page when order has been placed
 app.get("/confirm", (req, res) => {
   res.render("confirm.ejs");
-})
-
-// Selecting next button on homepage redirects user to checkout page
-app.post("/next", (req, res) => {
-  res.redirect("/checkout");
 })
 
 // Selecting confirm button on the checkout page redirects the user to the homepage with a confirmed pop-up
@@ -85,13 +76,13 @@ app.post("/checkout/confirm", (req, res) => {
     .then(function(results){
       //preste drinks
       if (req.body.preset_selected) {
-        let preset_orders = JSON.parse(req.body.preset_selected)      
+        let preset_orders = JSON.parse(req.body.preset_selected)
         for (let preset in preset_orders) {
           console.log("drink id", preset)
           console.log("qty", preset_orders[preset])
-          
+
           for (let i = 1 ; i <= preset_orders[preset]; i++ ) {
-            
+
             knex.insert({
               preset_drink_id: preset,
               order_id: knex.select('id').from('orders').where({phone_number: phoneNumber})
@@ -111,7 +102,7 @@ app.post("/checkout/confirm", (req, res) => {
           order_id: knex.select('id').distinct().from('orders').where({phone_number: phoneNumber})
         }).into('orders_lines')
         .then(function (results){
-    
+
           let queryCustomized = function(ingredient){
             knex.insert({
               customized_drink_id: knex('orders_lines').distinct('orders_lines.id').join('orders','orders_lines.order_id', 'orders.id').where({'orders.phone_number': phoneNumber, 'orders_lines.preset_drink_id':null}),
@@ -123,7 +114,7 @@ app.post("/checkout/confirm", (req, res) => {
           for (let ingredient in ingredients) {
             console.log("ingredient id", ingredient)
             console.log("ingredient", ingredients[ingredient])
-            
+
             queryCustomized(ingredient)
 
           }
@@ -131,7 +122,7 @@ app.post("/checkout/confirm", (req, res) => {
       }
     })
 
-    
+
 
   client.messages
   .create({
@@ -150,16 +141,16 @@ app.get("/business", (req, res) => {
 })
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
-app.post("/business/status", (req, res) => {
+app.post("/business/time", (req, res) => {
+  let orderId = req.body.orderId;
+  let minutes = req.body.minutes;
 
    knex.update({
-    status: "picked up"
+    estimated: minutes
   }).where({
-    id: req.body.orderId
+    id: orderId
   }).into('orders').then()
 
-
-  let minutes = req.body.minutes;
   client.messages
     .create({
        body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
@@ -172,9 +163,19 @@ app.post("/business/status", (req, res) => {
     res.redirect("/business")
 })
 
-// app.post("/business/status", (req, res) => {
-//   res.redirect("/business")
-// })
+// Selecting the "Pick up" button on the business page should update the order in the database to change the status from outstanding to picked up
+app.post("/business/status", (req, res) => {
+  let orderId = req.body.orderId;
+
+   knex.update({
+    status: "picked up"
+  }).where({
+    id: orderId
+  }).into('orders').then()
+
+  res.redirect("/business")
+});
+
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

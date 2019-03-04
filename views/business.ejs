@@ -41,13 +41,16 @@
             <h6>Ingredients: ingredients needed for custom drink</h6>
           </div>
           <footer class="line-item">
-            <form id="newOrder" method="POST" action="/business/time-entered">
+            <form id="newOrder" method="POST" action="/business/time">
               <h4>Minutes to completion:</h4>
               <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
               <textarea name="minutes"class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
-              <input method="POST" action="/business/time-entered" type="submit" value="Send to Customer">
+              <input name="minuteSubmit" class="minuteSubmit" type="submit" value="Send to Customer">
             </form>
-            <button class="pickedup" type="submit" value="Picked Up"> Picked Up</button>
+            <form method="POST" action="/business/status">
+                  <input type="hidden" name="orderId" value= ${order.orderNum}>
+                  <input method="POST" action="/business/status" class="pickedup" type="submit" value="Picked Up">
+            </form>
           </footer>
         </section>
       </div>

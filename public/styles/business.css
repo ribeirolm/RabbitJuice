@@ -9494,6 +9494,20 @@ footer.line-item {
   padding: 1rem;
 }
 
+#err-noTime {
+  display: none;
+  background-color: #C75050;
+  margin-left: 1rem;
+  text-align: center;
+  color: white;
+  font-style: 'Capriola', sans-serif;
+  height: 2rem;
+  line-height: 2rem;
+  width: 13rem;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 #nav-bar {
   height: 7rem;
   width: 100%;

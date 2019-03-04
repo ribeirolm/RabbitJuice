@@ -22,7 +22,7 @@ $(document).ready(function(){
           let newOrder = createOrderElement(order);
           $(".container").append(newOrder)
         });
-        
+
       }
 
     //Function to create new order sections
@@ -39,34 +39,36 @@ $(document).ready(function(){
                 <h6>Ingredients: ${order.ingredientname} </h6>
               </div>
               <footer class="line-item">
-                <form id="newOrder" method="POST" action="/business/time-entered">
+                <form id="newOrder" method="POST" action="/business/time">
                   <h4>Minutes to completion:</h4>
                   <p id= "err-noTime" hidden>This order does not have a time to completion therefore cannot be submitted.</p>
                   <textarea name="minutes" class = "textarea" name="text" placeholder="Enter number of minutes here"></textarea>
                   <input type="hidden" name="phoneNumber" value= ${escape(order.phoneNum)}>
+                  <input type="hidden" name="orderId" value= ${order.orderNum}>
                   <input name="minuteSubmit" class="minuteSubmit" type="submit" value="Send to Customer">
                 </form>
-                  <button class="pickedup" type="submit" value="Picked Up">Picked Up</button>
+                <form method="POST" action="/business/status">
+                  <input type="hidden" name="orderId" value= ${order.orderNum}>
+                  <input class="pickedup" type="submit" value="Picked Up">
+                </form>
               </footer>
               </section>`)
         return $order;
       }
 
-    //When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.
-    //If there is no value in time field being submitted an error message is displayed.
-      // $("#newOrder").submit(function(event) {
+    // When form with time to order completion is submitted, validation checks are in place to ensure the time field contains a value.
+    // If there is no value in time field being submitted an error message is displayed.
+      // $("#order").submit(function(event) {
       //   event.preventDefault();
-      //   let $time = $("#minutes").val().length;
+      //   let $time = $(".textarea").val().length;
       //       if($time === 0 || $time === null){
       //         document.getElementById("#err-noTime").hidden = false;
       //       } else {
-      //       $.post("/business/time-entered", $("#newOrder").serialize());
+      //       $.post("/business/time-", $("#order").serialize());
       //       location.reload();
       //     }
       // });
 
-    //To change the class of an order on the selection of "pick up" to hide the order when it has been picked up
-     
 
     //Function to load all orders
       function loadOrders(){
@@ -76,12 +78,11 @@ $(document).ready(function(){
         });
       }
 
-      $(".pickedup").on("click", function (event){
-        let $order = $(event.target.parentNode.parentNode);
-        console.log("working")
-        $order.slideUp();
-        console.log('working');
-      });
+    // //Selecting pickup button should hide that specific order
+    //   $(".pickedup").on("click", function (event){
+    //     let $order = $(event.target.parentNode.parentNode.parentNode);
+    //     $order.slideUp();
+    //   });
 
       // //Ensuring all orders are loaded
         loadOrders();
