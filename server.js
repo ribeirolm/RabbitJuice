@@ -146,7 +146,7 @@ app.post("/business/time", (req, res) => {
   let minutes = req.body.minutes;
 
    knex.update({
-    estimated: minutes
+    estimated_time: parseFloat(minutes)
   }).where({
     id: orderId
   }).into('orders').then()
