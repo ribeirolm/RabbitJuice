@@ -26,7 +26,7 @@ $(document).ready(function(){
       }
 
     //Function to create new order sections
-       function createOrderElement(order) {
+      function createOrderElement(order) {
         let $order =  $('<section id="order">').append(`
               <header>
               <h3>ORDER: ${order.orderNum}</h3>

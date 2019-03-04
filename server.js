@@ -172,6 +172,19 @@ app.post("/business/status", (req, res) => {
     res.redirect("/business")
 })
 
+// Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
+app.post("/business/time-entered", (req, res) => {
+
+  knex.update({
+  estimated_time: req.body.minutes
+  }).where({
+    id: req.body.orderId
+  }).into('orders').then()
+
+    res.redirect("/business")
+})
+
+
 // app.post("/business/status", (req, res) => {
 //   res.redirect("/business")
 // })
