@@ -163,19 +163,31 @@ app.post("/business/time", (req, res) => {
     res.redirect("/business")
 })
 
-// Selecting the "Pick up" button on the business page should update the order in the database to change the status from outstanding to picked up
-app.post("/business/status", (req, res) => {
-  let orderId = req.body.orderId;
 
-   knex.update({
-    status: "picked up"
+// Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
+app.post("/business/time-entered", (req, res) => {
+
+  knex.update({
+  estimated_time: req.body.minutes
   }).where({
-    id: orderId
+    id: req.body.orderId
   }).into('orders').then()
 
-  res.redirect("/business")
-});
+    res.redirect("/business")
+})
 
+
+// Selecting the "picked up" button on the business page should update database status to "picked up"
+app.post("/business/status", (req, res) => {
+
+  knex.update({
+  status: "picked up"
+  }).where({
+    id: req.body.orderId
+  }).into('orders').then()
+
+    res.redirect("/business")
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
