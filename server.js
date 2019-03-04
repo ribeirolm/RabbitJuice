@@ -154,7 +154,7 @@ app.post("/business/time", (req, res) => {
   client.messages
     .create({
        body: 'Your order has been processed and will be ready in ' + minutes + ' minutes. See you soon :)',
-       from: '+16477244390',
+       from: '+16477244390', //req.body.phone_number
        //We would ideally identify the "to" as req.body.phoneNumber to send the message to the customer who ordered the drink
        //However, because of twilio free trial limitations, we needed to hardcode the number as a verified caller ID within our twilio account
        to: process.env.CUSTOMER_NUMBER,
@@ -162,7 +162,6 @@ app.post("/business/time", (req, res) => {
     .then(message => console.log(message.sid));
     res.redirect("/business")
 })
-
 
 // Selecting the "send" button beside the "time" field on the business page should trigger Twilio to send a message to the customer about pickup time
 app.post("/business/time-entered", (req, res) => {
