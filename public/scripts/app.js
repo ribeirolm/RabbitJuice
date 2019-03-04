@@ -47,18 +47,98 @@ function loadPresets(){
         break;
       }
     });
-  })
+  });
 }
 
 function loadCustomizeIngredients() {
-  // $.ajax({
-  //   method: 'GET',
-  //   url:'/api/preset'
-  // }).done((presets) => {
+  $.ajax({
+    method: 'GET',
+    url:'/api/ingredients'
+  }).done((ingredients) => {
+    ingredients.forEach(ingredient => {
+      switch (ingredient.id) {
+        case 1:
+        $('.ingredient-price').eq(0).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(0).text(`$${ingredient.img}`);
+        break;
+
+        case 2:
+        $('.ingredient-price').eq(1).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(1).text(`$${ingredient.img}`);
+        break;
+        
+        case 3:
+        $('.ingredient-price').eq(2).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(2).text(`$${ingredient.img}`);
+        break;
+        
+        case 4:
+        $('.ingredient-price').eq(3).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(3).text(`$${ingredient.img}`);
+        break;
+        
+        case 5:
+        $('.ingredient-price').eq(4).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(4).text(`$${ingredient.img}`);
+        break;
+        
+        case 6:
+        $('.ingredient-price').eq(5).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(5).text(`$${ingredient.img}`);
+        break;
+        
+        case 7:
+        $('.ingredient-price').eq(6).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(6).text(`$${ingredient.img}`);
+        break;
+
+        case 8:
+        $('.ingredient-price').eq(7).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(7).text(`$${ingredient.img}`);
+        break;
+
+        case 9:
+        $('.ingredient-price').eq(8).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(8).text(`$${ingredient.img}`);
+        break;
+
+        case 10:
+        $('.ingredient-price').eq(9).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(9).text(`$${ingredient.img}`);
+        break;
+
+        case 11:
+        $('.ingredient-price').eq(10).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(10).text(`$${ingredient.img}`);
+        break;
+
+        case 12:
+        $('.ingredient-price').eq(11).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(11).text(`$${ingredient.img}`);
+        break;
+
+        case 13:
+        $('.ingredient-price').eq(12).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(12).text(`$${ingredient.img}`);
+        break;
+
+        case 14:
+        $('.ingredient-price').eq(13).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(13).text(`$${ingredient.img}`);
+        break;
+
+        case 15:
+        $('.ingredient-price').eq(14).text(`$${ingredient.price}`);
+        $('.ingredient-pics').eq(14).text(`$${ingredient.img}`);
+        break;
+      }
+    });
+  });
 }
 
   //calling preset drink data
-loadPresets()
+loadPresets();
+loadCustomizeIngredients();
 
 
 $(document).ready(function() {
@@ -89,6 +169,11 @@ $(document).ready(function() {
       errorMsg.slideDown();
       errorMsg.css('#field-error');
       errorMsg.html('<i class="fas fa-exclamation"></i> Please enter your number');
+    }
+    else if (totalCounter === 0){
+      errorMsg.slideDown();
+      errorMsg.css('#field-error');
+      errorMsg.html('<i class="fas fa-exclamation"></i> Please add an item');
     }
     else{
       errorMsg.slideUp("medium");
